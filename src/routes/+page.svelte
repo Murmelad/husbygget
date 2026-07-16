@@ -180,9 +180,11 @@
 <section class="mt-6 rounded-card border border-line bg-panel p-5 shadow-card" aria-label="Budget">
 	<div class="flex items-baseline justify-between gap-3">
 		<span class="eyebrow">Budget</span>
-		<span class="text-[13px] text-dim"
-			>{summary.decidedCount} av {summary.decidableCount} beslut fattade</span
-		>
+		{#if summary.decidableCount > 0}
+			<span class="text-[13px] text-dim"
+				>{summary.decidedCount} av {summary.decidableCount} beslut fattade</span
+			>
+		{/if}
 	</div>
 
 	<div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">

@@ -55,7 +55,9 @@ export async function selectOption(
  * options, selections) + settings, joined in JS — no per-section N+1.
  *
  * - `allocated` = Σ selected non-archived option costs over non-archived sections.
- * - `decidableCount` = non-archived sections having ≥1 non-archived option.
+ * - `decidableCount` = non-archived sections with ≥2 non-archived options — i.e. actual
+ *   DECISIONS. A single-option section is a fixed cost line, not a choice, so it counts
+ *   toward `allocated` but never toward the beslut counter.
  * - `decidedCount` = of those, how many have a (valid, non-archived) selection.
  */
 export async function getSummary(db: Db, scenarioId: number): Promise<BudgetSummary> {
@@ -94,7 +96,7 @@ export async function getSummary(db: Db, scenarioId: number): Promise<BudgetSumm
 		const selectedOptionId = selectedOption ? selectedOption.id : null;
 		const selectedCost = selectedOption ? selectedOption.cost : null;
 
-		if (opts.length > 0) {
+		if (opts.length >= 2) {
 			decidableCount++;
 			if (selectedOptionId != null) decidedCount++;
 		}
