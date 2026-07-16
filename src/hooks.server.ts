@@ -5,8 +5,8 @@ import { getEnv } from '$lib/server/platform';
 
 /**
  * Auth. The whole app is private — no public routes, nothing edge-cached — so every request
- * is protected twice. Cloudflare Access (a self-hosted app on the workers.dev hostname, no
- * path scope) challenges the visitor at the edge and injects a signed JWT
+ * is protected twice. Cloudflare Access (a self-hosted app on husbygget.nu, no path scope)
+ * challenges the visitor at the edge and injects a signed JWT
  * (`Cf-Access-Jwt-Assertion`); this hook re-verifies that JWT against the team's public keys
  * and fails closed (403) if it is missing/invalid or the Access config slips — so the app
  * never goes public even if the edge app is removed or misconfigured.

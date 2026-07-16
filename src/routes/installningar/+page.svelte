@@ -143,9 +143,12 @@
 										<form
 											method="POST"
 											action="?/archiveSection"
-											use:enhance
+											use:enhance={() =>
+												async ({ update }) => {
+													confirmSection = null;
+													await update();
+												}}
 											class="contents"
-											onsubmit={() => (confirmSection = null)}
 										>
 											<input type="hidden" name="sectionId" value={s.id} />
 											<Button
@@ -286,9 +289,12 @@
 													<form
 														method="POST"
 														action="?/archiveOption"
-														use:enhance
+														use:enhance={() =>
+															async ({ update }) => {
+																confirmOption = null;
+																await update();
+															}}
 														class="contents"
-														onsubmit={() => (confirmOption = null)}
 													>
 														<input type="hidden" name="optionId" value={o.id} />
 														<Button variant="danger" size="sm">Bekräfta arkivering</Button>

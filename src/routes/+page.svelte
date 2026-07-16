@@ -237,16 +237,14 @@
 		>
 	</EmptyState>
 {:else}
-	<section class="relative mt-8 pl-[46px]" aria-label="Byggordning">
+	<h2 class="mt-8 font-display text-[15px] font-bold tracking-[0.1em] text-dim uppercase">
+		Byggordning
+	</h2>
+	<section class="relative mt-4 pl-[46px]" aria-label="Byggordning">
 		<div
 			class="pointer-events-none absolute top-2 bottom-2 left-[15px] w-0.5 bg-line-strong"
 			aria-hidden="true"
 		></div>
-		<h2
-			class="mb-3.5 -ml-[46px] font-display text-[15px] font-bold tracking-[0.1em] text-dim uppercase"
-		>
-			Byggordning
-		</h2>
 
 		{#each summary.sections as row, i (row.section.id)}
 			<div class="relative mb-3.5">
