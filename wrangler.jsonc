@@ -1,0 +1,22 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "husbygget",
+	// Workers static-assets mode (adapter-cloudflare emits the Workers format).
+	// Account comes from CLOUDFLARE_API_TOKEN: e053feb1c2434700db1071e3f57b7797 — keep account_id OUT of this file.
+	"compatibility_date": "2026-06-15",
+	"compatibility_flags": ["nodejs_als"],
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"assets": { "binding": "ASSETS", "directory": ".svelte-kit/cloudflare" },
+	"vars": {
+		"CF_ACCESS_TEAM_DOMAIN": "lucky-silence-8229.cloudflareaccess.com",
+		"CF_ACCESS_AUD": "" // filled after the Access app is created; empty = fail closed in prod
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "husbygget-db",
+			"database_id": "68027d00-37cc-46d9-bdf1-844c0bae6209",
+			"migrations_dir": "drizzle"
+		}
+	]
+}
