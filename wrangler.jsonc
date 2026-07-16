@@ -7,6 +7,9 @@
 	"compatibility_flags": ["nodejs_als"],
 	"main": ".svelte-kit/cloudflare/_worker.js",
 	"assets": { "binding": "ASSETS", "directory": ".svelte-kit/cloudflare" },
+	// Custom domain (zone husbygget.nu is on this Cloudflare account) — bound on deploy.
+	// The Zero Trust Access app must target husbygget.nu (not workers.dev).
+	"routes": [{ "pattern": "husbygget.nu", "custom_domain": true }],
 	"vars": {
 		"CF_ACCESS_TEAM_DOMAIN": "lucky-silence-8229.cloudflareaccess.com",
 		"CF_ACCESS_AUD": "" // filled after the Access app is created; empty = fail closed in prod
