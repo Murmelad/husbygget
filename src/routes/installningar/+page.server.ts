@@ -76,7 +76,14 @@ export const actions: Actions = {
 		const db = dbFromPlatform(platform);
 		const form = await request.formData();
 		const name = strOf(form.get('name')).trim();
+		// Optional fixed cost: creates the section's single option (auto-selected),
+		// so a plain cost line needs no separate "add option" step.
+		const rawCost = strOf(form.get('cost')).trim();
+		const cost = intOf(form.get('cost'));
 		if (!name) return fail(400, { error: 'Namnge avsnittet.' });
+		if (rawCost !== '' && (cost === null || cost < 0)) {
+			return fail(400, { error: 'Ange en giltig kostnad (heltal ≥ 0).' });
+		}
 		const section = await createSection(db, name);
 		await logDecision(db, {
 			action: 'add_section',
@@ -84,6 +91,21 @@ export const actions: Actions = {
 			sectionId: section.id,
 			detail: section.name
 		});
+		if (rawCost !== '' && cost !== null) {
+			const scenarioId = await getActiveScenarioId(db);
+			const { option } = await createOption(db, scenarioId, section.id, {
+				name: section.name,
+				cost
+			});
+			await logDecision(db, {
+				action: 'add_option',
+				userEmail: locals.userEmail ?? null,
+				scenarioId,
+				sectionId: section.id,
+				optionId: option.id,
+				detail: `${option.name} (${formatSEK(option.cost)}) — valdes automatiskt`
+			});
+		}
 		return { ok: true };
 	},
 

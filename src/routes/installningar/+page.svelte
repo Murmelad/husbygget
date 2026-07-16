@@ -55,6 +55,19 @@
 				class="{inputCls} w-full"
 			/>
 		</div>
+		<div class="flex flex-col gap-1">
+			<label for="new-section-cost" class="text-[13px] text-dim">Kostnad (kr, valfritt)</label>
+			<input
+				id="new-section-cost"
+				name="cost"
+				type="number"
+				min="0"
+				step="1"
+				inputmode="numeric"
+				placeholder="lämna tomt för att lägga alternativ senare"
+				class="{inputCls} money w-64"
+			/>
+		</div>
 		<Button variant="primary" size="md">Lägg till avsnitt</Button>
 	</form>
 
