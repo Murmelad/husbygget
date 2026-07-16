@@ -9,6 +9,7 @@ import {
 } from '$lib/server/scenarios';
 import {
 	createSection,
+	deleteSection,
 	listAll,
 	moveSection,
 	renameSection,
@@ -16,6 +17,7 @@ import {
 } from '$lib/server/sections';
 import {
 	createOption,
+	deleteOption,
 	getOption,
 	listAllOptions,
 	setOptionArchived,
@@ -171,6 +173,24 @@ export const actions: Actions = {
 		return { ok: true };
 	},
 
+	deleteSection: async ({ request, platform, locals }) => {
+		const db = dbFromPlatform(platform);
+		const form = await request.formData();
+		const sectionId = intOf(form.get('sectionId'));
+		if (sectionId === null || sectionId <= 0) return fail(400, { error: 'Ogiltigt avsnitt.' });
+		try {
+			const section = await deleteSection(db, sectionId);
+			await logDecision(db, {
+				action: 'delete_section',
+				userEmail: locals.userEmail ?? null,
+				detail: `${section.name} togs bort permanent (inkl. alternativ)`
+			});
+		} catch {
+			return fail(400, { error: 'Endast arkiverade avsnitt kan tas bort permanent.' });
+		}
+		return { ok: true };
+	},
+
 	addOption: async ({ request, platform, locals }) => {
 		const db = dbFromPlatform(platform);
 		const scenarioId = await getActiveScenarioId(db);
@@ -231,12 +251,7 @@ export const actions: Actions = {
 		if (optionId === null || optionId <= 0) return fail(400, { error: 'Ogiltigt alternativ.' });
 		const opt = await getOption(db, optionId);
 		const outcome = await setOptionArchived(db, scenarioId, optionId, true);
-		const outcomeLabel =
-			outcome === 'reselected'
-				? 'billigaste kvarvarande valdes'
-				: outcome === 'cleared'
-					? 'inget val kvar'
-					: 'valet oförändrat';
+		const outcomeLabel = outcome === 'cleared' ? 'valet rensades' : 'valet oförändrat';
 		await logDecision(db, {
 			action: 'archive_option',
 			userEmail: locals.userEmail ?? null,
@@ -244,6 +259,26 @@ export const actions: Actions = {
 			sectionId: opt?.sectionId,
 			optionId,
 			detail: `${opt?.name ?? `#${optionId}`} arkiverat — ${outcomeLabel}`
+		});
+		return { ok: true };
+	},
+
+	deleteOption: async ({ request, platform, locals }) => {
+		const db = dbFromPlatform(platform);
+		const form = await request.formData();
+		const optionId = intOf(form.get('optionId'));
+		if (optionId === null || optionId <= 0) return fail(400, { error: 'Ogiltigt alternativ.' });
+		const opt = await getOption(db, optionId);
+		if (!opt) return fail(400, { error: 'Alternativet finns inte.' });
+		if (!opt.archived) {
+			return fail(400, { error: 'Endast arkiverade alternativ kan tas bort permanent.' });
+		}
+		await deleteOption(db, optionId);
+		await logDecision(db, {
+			action: 'delete_option',
+			userEmail: locals.userEmail ?? null,
+			sectionId: opt.sectionId,
+			detail: `${opt.name} (${formatSEK(opt.cost)}) togs bort permanent`
 		});
 		return { ok: true };
 	},

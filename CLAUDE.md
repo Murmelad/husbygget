@@ -50,9 +50,11 @@ npm run db:migrate:local   # / :remote
   seeded scenario 1 'Plan' (`settings.active_scenario_id`). Named scenarios later =
   new rows + a switcher, NO migration. The total budget is global (one household
   ceiling), not per-scenario.
-- **Soft archive, never hard-delete** (sections + options) — keeps `decision_log`
-  references and history intact. Archiving a selected option reselects the cheapest
-  remaining or clears the selection (`setOptionArchived`).
+- **Archive first; delete only archived things.** Archiving a selected option CLEARS
+  the selection (no auto-reselect — the cost must not silently reappear as another
+  option; `setOptionArchived`). Archived options (`deleteOption`) and archived sections
+  (`deleteSection`, cascades options + selections) may be hard-deleted: `decision_log`
+  keeps its detail text with the FK columns nulled.
 - **First option auto-selects** (`createOption`) so fixed-cost lines count without
   special-casing. Budget math lives in `budget.getSummary` (few queries, joined in JS —
   no N+1).

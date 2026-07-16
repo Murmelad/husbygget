@@ -1,6 +1,6 @@
 import { and, asc, eq, max } from 'drizzle-orm';
 import type { getDb } from './db';
-import { options, selections, type Option } from './db/schema';
+import { decisionLog, options, selections, type Option } from './db/schema';
 
 type Db = ReturnType<typeof getDb>;
 
@@ -99,18 +99,19 @@ export async function updateOption(db: Db, id: number, data: OptionInput): Promi
 }
 
 /**
- * Archive / unarchive an option. When archiving the option that is currently selected
- * for this scenario, reselect the cheapest remaining non-archived option in the section,
- * or clear the selection if none remain.
+ * Archive / unarchive an option. Archiving the option that is currently selected for
+ * this scenario CLEARS the section's selection — the cost stops counting and Översikt
+ * shows "Inget val" until the user actively picks an alternative. (No auto-reselect:
+ * an archived cost silently reappearing as a different option surprised users.)
  *
- * Returns what happened to the selection: `'reselected'`, `'cleared'`, or `'none'`.
+ * Returns what happened to the selection: `'cleared'` or `'none'`.
  */
 export async function setOptionArchived(
 	db: Db,
 	scenarioId: number,
 	id: number,
 	archived: boolean
-): Promise<'reselected' | 'cleared' | 'none'> {
+): Promise<'cleared' | 'none'> {
 	const optRows = await db.select().from(options).where(eq(options.id, id)).limit(1);
 	const opt = optRows[0];
 	if (!opt) throw new Error(`Option ${id} not found`);
@@ -128,22 +129,24 @@ export async function setOptionArchived(
 	const sel = selRows[0];
 	if (!sel || sel.optionId !== id) return 'none';
 
-	// The just-archived option is excluded here (archived = true), so this is the
-	// cheapest of the *remaining* choices; ties break by sortOrder then id.
-	const remaining = await db
-		.select()
-		.from(options)
-		.where(and(eq(options.sectionId, opt.sectionId), eq(options.archived, false)))
-		.orderBy(asc(options.cost), asc(options.sortOrder), asc(options.id));
-	const cheapest = remaining[0];
-	if (cheapest) {
-		await db
-			.update(selections)
-			.set({ optionId: cheapest.id, updatedAt: new Date() })
-			.where(eq(selections.id, sel.id));
-		return 'reselected';
-	}
-
 	await db.delete(selections).where(eq(selections.id, sel.id));
 	return 'cleared';
+}
+
+/**
+ * Permanently delete an ARCHIVED option (archive-first is the guard against slips).
+ * Any selections referencing it are removed; decision_log rows keep their human-readable
+ * detail text but drop the FK (option_id → null) so the audit trail stays intact.
+ * Returns the deleted option (for logging).
+ */
+export async function deleteOption(db: Db, id: number): Promise<Option> {
+	const optRows = await db.select().from(options).where(eq(options.id, id)).limit(1);
+	const opt = optRows[0];
+	if (!opt) throw new Error(`Option ${id} not found`);
+	if (!opt.archived) throw new Error('Only archived options can be deleted');
+
+	await db.delete(selections).where(eq(selections.optionId, id));
+	await db.update(decisionLog).set({ optionId: null }).where(eq(decisionLog.optionId, id));
+	await db.delete(options).where(eq(options.id, id));
+	return opt;
 }

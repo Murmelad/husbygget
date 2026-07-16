@@ -11,6 +11,8 @@
 	// Two-step inline confirm state for destructive actions (one open at a time).
 	let confirmSection = $state<number | null>(null);
 	let confirmOption = $state<number | null>(null);
+	let confirmDelete = $state<number | null>(null);
+	let confirmDeleteSection = $state<number | null>(null);
 
 	// Ordered ids of the non-archived sections — to disable move at the ends.
 	const activeIds = $derived(data.sections.filter((s) => !s.archived).map((s) => s.id));
@@ -139,6 +141,48 @@
 												onclick={stop}>Återställ</Button
 											>
 										</form>
+										{#if confirmDeleteSection === s.id}
+											<form
+												method="POST"
+												action="?/deleteSection"
+												use:enhance={() =>
+													async ({ update }) => {
+														confirmDeleteSection = null;
+														await update();
+													}}
+												class="contents"
+											>
+												<input type="hidden" name="sectionId" value={s.id} />
+												<Button
+													variant="danger"
+													size="sm"
+													title="Bekräfta permanent borttagning"
+													aria-label="Bekräfta permanent borttagning av {s.name}"
+													onclick={stop}>Ta bort permanent</Button
+												>
+											</form>
+											<Button
+												variant="subtle"
+												size="sm"
+												type="button"
+												onclick={(e: Event) => {
+													stop(e);
+													confirmDeleteSection = null;
+												}}>Avbryt</Button
+											>
+										{:else}
+											<Button
+												variant="danger"
+												size="sm"
+												type="button"
+												title="Ta bort avsnittet permanent (inkl. alternativ)"
+												aria-label="Ta bort {s.name} permanent"
+												onclick={(e: Event) => {
+													stop(e);
+													confirmDeleteSection = s.id;
+												}}>Ta bort</Button
+											>
+										{/if}
 									{:else if confirmSection === s.id}
 										<form
 											method="POST"
@@ -285,6 +329,36 @@
 														<input type="hidden" name="optionId" value={o.id} />
 														<Button variant="subtle" size="sm">Återställ alternativ</Button>
 													</form>
+													{#if confirmDelete === o.id}
+														<form
+															method="POST"
+															action="?/deleteOption"
+															use:enhance={() =>
+																async ({ update }) => {
+																	confirmDelete = null;
+																	await update();
+																}}
+															class="contents"
+														>
+															<input type="hidden" name="optionId" value={o.id} />
+															<Button variant="danger" size="sm">Ta bort permanent</Button>
+														</form>
+														<Button
+															variant="subtle"
+															size="sm"
+															type="button"
+															onclick={() => (confirmDelete = null)}>Avbryt</Button
+														>
+													{:else}
+														<Button
+															variant="danger"
+															size="sm"
+															type="button"
+															title="Ta bort alternativet permanent"
+															aria-label="Ta bort {o.name} permanent"
+															onclick={() => (confirmDelete = o.id)}>Ta bort</Button
+														>
+													{/if}
 												{:else if confirmOption === o.id}
 													<form
 														method="POST"

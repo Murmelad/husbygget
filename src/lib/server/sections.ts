@@ -1,6 +1,14 @@
-import { asc, eq, max } from 'drizzle-orm';
+import { asc, eq, inArray, max } from 'drizzle-orm';
 import type { getDb } from './db';
-import { SECTION_STATUSES, sections, type Section, type SectionStatus } from './db/schema';
+import {
+	decisionLog,
+	options,
+	SECTION_STATUSES,
+	sections,
+	selections,
+	type Section,
+	type SectionStatus
+} from './db/schema';
 
 type Db = ReturnType<typeof getDb>;
 
@@ -59,6 +67,35 @@ export async function saveNotes(db: Db, id: number, notes: string): Promise<void
 
 export async function setSectionArchived(db: Db, id: number, archived: boolean): Promise<void> {
 	await db.update(sections).set({ archived, updatedAt: new Date() }).where(eq(sections.id, id));
+}
+
+/**
+ * Permanently delete an ARCHIVED section with everything under it (options, selections).
+ * decision_log rows keep their human-readable detail text but drop the FKs
+ * (section_id/option_id → null) so the audit trail stays intact.
+ * Returns the deleted section (for logging).
+ */
+export async function deleteSection(db: Db, id: number): Promise<Section> {
+	const rows = await db.select().from(sections).where(eq(sections.id, id)).limit(1);
+	const section = rows[0];
+	if (!section) throw new Error(`Section ${id} not found`);
+	if (!section.archived) throw new Error('Only archived sections can be deleted');
+
+	const optionIds = (
+		await db.select({ id: options.id }).from(options).where(eq(options.sectionId, id))
+	).map((o) => o.id);
+
+	await db.delete(selections).where(eq(selections.sectionId, id));
+	if (optionIds.length) {
+		await db
+			.update(decisionLog)
+			.set({ optionId: null })
+			.where(inArray(decisionLog.optionId, optionIds));
+	}
+	await db.update(decisionLog).set({ sectionId: null }).where(eq(decisionLog.sectionId, id));
+	await db.delete(options).where(eq(options.sectionId, id));
+	await db.delete(sections).where(eq(sections.id, id));
+	return section;
 }
 
 /**
