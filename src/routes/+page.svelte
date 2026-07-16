@@ -49,7 +49,7 @@
 {#snippet node(s: Sec, n: number)}
 	<div
 		aria-hidden="true"
-		class="absolute top-3.5 -left-[46px] grid size-8 place-items-center rounded-full border-2 font-display text-sm font-bold {s.status ===
+		class="absolute top-2 -left-[46px] grid size-8 place-items-center rounded-full border-2 font-display text-sm font-bold {s.status ===
 		'klar'
 			? 'border-klar bg-klar text-white'
 			: s.status === 'pagar'
