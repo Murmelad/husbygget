@@ -10,7 +10,10 @@ The app looks like an architect's working drawing: drafting-ink blue on cool
 drawing-paper neutrals, DIN-style display lettering, mono micro-labels like drawing
 annotations, hatching for the one state that matters. Dark mode is a **night blueprint**
 (deep blue-slate ground), not an inversion — both modes ship via
-`prefers-color-scheme`; there is no manual toggle in v1.
+`prefers-color-scheme`, and `<ThemeToggle>` (header) lets the user pin an override
+(`data-theme` on `<html>`, persisted in localStorage, applied pre-paint in `app.html`).
+The three token blocks in `app.css` (media-query dark, `data-theme` dark/light) must
+stay token-for-token in sync.
 
 **Faluröd is reserved.** The red family appears ONLY for over-budget/danger. Never use
 it as decoration, never as a second accent.

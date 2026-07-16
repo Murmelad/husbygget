@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/state';
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 
 	let { children } = $props();
 
@@ -37,6 +38,7 @@
 				</a>
 			{/each}
 		</nav>
+		<ThemeToggle />
 	</header>
 </div>
 

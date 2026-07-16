@@ -33,6 +33,10 @@
 	--danger-tint: #f7e9e6;
 
 	--shadow: 0 1px 2px rgb(33 43 51 / 0.05);
+
+	/* Theme-dependent visibility (ThemeToggle icons). */
+	--when-light: inline;
+	--when-dark: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,7 +63,61 @@
 		--danger-tint: #3d2420;
 
 		--shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+
+		--when-light: none;
+		--when-dark: inline;
 	}
+}
+
+/* Manual override (ThemeToggle stamps data-theme on <html>; persisted in
+   localStorage, applied pre-paint by the head script in app.html). These MUST
+   mirror the two blocks above token-for-token and win in both directions. */
+:root[data-theme='dark'] {
+	--ground: #16202b;
+	--panel: #1d2630;
+	--panel-2: #222d39;
+	--ink: #e5eaee;
+	--dim: #93a1ad;
+	--line: #33404d;
+	--line-strong: #46545f;
+	--accent: #5493cc;
+	--accent-ink: #7fb0dd;
+	--accent-tint: #22344a;
+	--accent-contrast: #10181f;
+	--klar: #35855a;
+	--klar-tint: #1e3529;
+	--pagar: #c08631;
+	--pagar-ink: #d8a558;
+	--pagar-tint: #38301c;
+	--danger: #b8422f;
+	--danger-tint: #3d2420;
+	--shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+	--when-light: none;
+	--when-dark: inline;
+}
+
+:root[data-theme='light'] {
+	--ground: #f2f3ef;
+	--panel: #fdfdfb;
+	--panel-2: #f7f8f4;
+	--ink: #212b33;
+	--dim: #5d6b74;
+	--line: #dde1da;
+	--line-strong: #c3cac1;
+	--accent: #1f639e;
+	--accent-ink: #17517f;
+	--accent-tint: #eaf1f7;
+	--accent-contrast: #ffffff;
+	--klar: #1d6b3c;
+	--klar-tint: #e7f1e9;
+	--pagar: #c2841a;
+	--pagar-ink: #8a5c0f;
+	--pagar-tint: #f9f0dd;
+	--danger: #96261a;
+	--danger-tint: #f7e9e6;
+	--shadow: 0 1px 2px rgb(33 43 51 / 0.05);
+	--when-light: inline;
+	--when-dark: none;
 }
 
 /* Semantic Tailwind utilities (bg-panel, text-dim, border-line, bg-accent…).
