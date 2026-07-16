@@ -1,0 +1,477 @@
+<title>Husbygget — designriktning</title>
+<style>
+	/* ============ HUSBYGGET DESIGN TOKENS — "byggritning" ============
+	   Drafting-ink blue on cool drawing paper; falu red reserved for
+	   over-budget; pine green = klar; ochre = pågår.
+	   Palette validated (dataviz six checks) light + dark. */
+	:root {
+		--ground: #f2f3ef;
+		--panel: #fdfdfb;
+		--panel-2: #f7f8f4;
+		--ink: #212b33;
+		--dim: #5d6b74;
+		--line: #dde1da;
+		--line-strong: #c3cac1;
+
+		--accent: #1f639e;
+		--accent-ink: #17517f;
+		--accent-tint: #eaf1f7;
+
+		--klar: #1d6b3c;
+		--klar-tint: #e7f1e9;
+		--pagar: #c2841a;
+		--pagar-ink: #8a5c0f;
+		--pagar-tint: #f9f0dd;
+		--danger: #96261a;
+		--danger-tint: #f7e9e6;
+
+		--radius: 9px;
+		--radius-sm: 6px;
+		--shadow: 0 1px 2px rgb(33 43 51 / 0.05);
+
+		--display: Bahnschrift, 'Arial Narrow', 'Segoe UI', system-ui, sans-serif;
+		--body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+		--mono: 'Cascadia Mono', Consolas, ui-monospace, monospace;
+	}
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--ground: #16202b;
+			--panel: #1d2630;
+			--panel-2: #222d39;
+			--ink: #e5eaee;
+			--dim: #93a1ad;
+			--line: #33404d;
+			--line-strong: #46545f;
+
+			--accent: #5493cc;
+			--accent-ink: #7fb0dd;
+			--accent-tint: #22344a;
+
+			--klar: #35855a;
+			--klar-tint: #1e3529;
+			--pagar: #c08631;
+			--pagar-ink: #d8a558;
+			--pagar-tint: #38301c;
+			--danger: #b8422f;
+			--danger-tint: #3d2420;
+
+			--shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+		}
+	}
+	:root[data-theme='dark'] {
+		--ground: #16202b; --panel: #1d2630; --panel-2: #222d39;
+		--ink: #e5eaee; --dim: #93a1ad; --line: #33404d; --line-strong: #46545f;
+		--accent: #5493cc; --accent-ink: #7fb0dd; --accent-tint: #22344a;
+		--klar: #35855a; --klar-tint: #1e3529;
+		--pagar: #c08631; --pagar-ink: #d8a558; --pagar-tint: #38301c;
+		--danger: #b8422f; --danger-tint: #3d2420;
+		--shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+	}
+	:root[data-theme='light'] {
+		--ground: #f2f3ef; --panel: #fdfdfb; --panel-2: #f7f8f4;
+		--ink: #212b33; --dim: #5d6b74; --line: #dde1da; --line-strong: #c3cac1;
+		--accent: #1f639e; --accent-ink: #17517f; --accent-tint: #eaf1f7;
+		--klar: #1d6b3c; --klar-tint: #e7f1e9;
+		--pagar: #c2841a; --pagar-ink: #8a5c0f; --pagar-tint: #f9f0dd;
+		--danger: #96261a; --danger-tint: #f7e9e6;
+		--shadow: 0 1px 2px rgb(33 43 51 / 0.05);
+	}
+
+	* { box-sizing: border-box; }
+	body {
+		margin: 0;
+		background: var(--ground);
+		color: var(--ink);
+		font: 15px/1.55 var(--body);
+	}
+	.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px 64px; }
+	.money { font-variant-numeric: tabular-nums; white-space: nowrap; }
+	:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+	@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+	/* ---------- header ---------- */
+	header.site {
+		display: flex; align-items: baseline; gap: 24px;
+		padding: 22px 0 14px;
+		border-bottom: 2px solid var(--ink);
+	}
+	.wordmark {
+		font-family: var(--display);
+		font-size: 22px; font-weight: 700;
+		letter-spacing: 0.14em; text-transform: uppercase;
+	}
+	.wordmark .beam { color: var(--accent); }
+	nav.site { display: flex; gap: 18px; margin-left: auto; }
+	nav.site a {
+		font-family: var(--display); font-size: 13.5px; letter-spacing: 0.08em;
+		text-transform: uppercase; text-decoration: none; color: var(--dim);
+		padding: 2px 0;
+	}
+	nav.site a[aria-current='page'] {
+		color: var(--ink);
+		border-bottom: 2px solid var(--accent);
+	}
+
+	/* ---------- budget board ---------- */
+	.board {
+		margin-top: 26px;
+		background: var(--panel);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		box-shadow: var(--shadow);
+		padding: 18px 20px 20px;
+	}
+	.board-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+	.eyebrow {
+		font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+		text-transform: uppercase; color: var(--dim);
+	}
+	.decisions-note { font-size: 13px; color: var(--dim); }
+	.tiles {
+		display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+		margin-top: 12px;
+	}
+	@media (max-width: 560px) { .tiles { grid-template-columns: 1fr; } }
+	.tile {
+		background: var(--panel-2);
+		border: 1px solid var(--line);
+		border-radius: var(--radius-sm);
+		padding: 10px 14px 12px;
+	}
+	.tile .label { font-size: 12.5px; color: var(--dim); }
+	.tile .value {
+		font-family: var(--display); font-size: 24px; font-weight: 700;
+		font-variant-numeric: tabular-nums; margin-top: 2px;
+	}
+	.tile .value small { font-size: 14px; font-weight: 400; color: var(--dim); }
+	.tile.kvar .value { color: var(--klar); }
+	.tile.kvar.over .value { color: var(--danger); }
+
+	.meter { margin-top: 16px; }
+	.meter .bar {
+		height: 14px; border-radius: 7px; overflow: hidden;
+		background: var(--panel-2);
+		border: 1px solid var(--line-strong);
+		display: flex;
+	}
+	.meter .fill { background: var(--accent); border-radius: 7px 0 0 7px; }
+	.meter .overflow {
+		background: repeating-linear-gradient(45deg,
+			var(--danger) 0 5px, transparent 5px 9px);
+		background-color: var(--danger-tint);
+	}
+	.meter .scale {
+		display: flex; justify-content: space-between;
+		font-family: var(--mono); font-size: 11px; color: var(--dim); margin-top: 5px;
+	}
+
+	/* ---------- timeline ---------- */
+	.timeline { margin-top: 34px; position: relative; padding-left: 46px; }
+	.timeline::before {
+		content: ''; position: absolute; left: 15px; top: 8px; bottom: 8px;
+		width: 2px; background: var(--line-strong);
+	}
+	h2.tl-title {
+		font-family: var(--display); font-size: 15px; font-weight: 700;
+		letter-spacing: 0.1em; text-transform: uppercase;
+		margin: 0 0 14px -46px; color: var(--dim);
+	}
+	.step { position: relative; margin-bottom: 14px; }
+	.node {
+		position: absolute; left: -46px; top: 14px;
+		width: 32px; height: 32px; border-radius: 50%;
+		display: grid; place-items: center;
+		font-family: var(--display); font-size: 14px; font-weight: 700;
+		background: var(--panel); border: 2px solid var(--line-strong); color: var(--dim);
+	}
+	.step.klar .node { background: var(--klar); border-color: var(--klar); color: #fff; }
+	.step.pagar .node { border-color: var(--pagar); color: var(--pagar-ink); }
+
+	.card {
+		background: var(--panel);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		box-shadow: var(--shadow);
+	}
+	.card-row {
+		display: flex; align-items: center; gap: 12px;
+		padding: 13px 16px;
+	}
+	.card-row .name { font-weight: 600; font-size: 15.5px; }
+	.card-row .sel { color: var(--dim); font-size: 13.5px; }
+	.card-row .cost { margin-left: auto; font-weight: 600; }
+	.card-row .cost.none { color: var(--dim); font-weight: 400; font-style: italic; }
+
+	.pill {
+		display: inline-flex; align-items: center; gap: 6px;
+		font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+		padding: 2px 9px; border-radius: 99px; white-space: nowrap;
+	}
+	.pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+	.pill.ej { background: var(--panel-2); color: var(--dim); border: 1px solid var(--line-strong); }
+	.pill.pagar { background: var(--pagar-tint); color: var(--pagar-ink); }
+	.pill.klar { background: var(--klar-tint); color: var(--klar); }
+
+	/* decision cards: <details> */
+	details.card > summary { list-style: none; cursor: pointer; border-radius: var(--radius); }
+	details.card > summary::-webkit-details-marker { display: none; }
+	.chip {
+		font-size: 12px; color: var(--accent-ink);
+		border: 1px solid var(--line-strong); border-radius: 99px;
+		padding: 2px 10px; white-space: nowrap;
+	}
+	.chip::after { content: ' ▾'; font-size: 10px; }
+	details[open] .chip::after { content: ' ▴'; }
+
+	.options { border-top: 1px solid var(--line); padding: 10px 12px 12px; display: grid; gap: 8px; }
+	.opt {
+		display: flex; align-items: center; gap: 12px;
+		border: 1px solid var(--line); border-radius: var(--radius-sm);
+		padding: 10px 12px; cursor: pointer;
+	}
+	.opt input { accent-color: var(--accent); width: 16px; height: 16px; margin: 0; }
+	.opt .o-name { font-weight: 600; font-size: 14px; }
+	.opt .o-desc { font-size: 12.5px; color: var(--dim); }
+	.opt .o-cost { margin-left: auto; font-weight: 600; font-size: 14px; }
+	.opt.vald { border-color: var(--accent); background: var(--accent-tint); }
+	.opt .vald-chip {
+		font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+		color: var(--accent-ink); border: 1px solid var(--accent); border-radius: 99px;
+		padding: 1px 8px; margin-left: 10px;
+	}
+	.add-opt {
+		font-size: 13px; color: var(--dim); text-align: left;
+		background: none; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm);
+		padding: 8px 12px; cursor: pointer; font-family: var(--body);
+	}
+	.note { padding: 0 16px 12px; font-size: 13px; color: var(--dim); }
+	.note b { color: var(--ink); font-weight: 600; }
+
+	/* ---------- spec strip ---------- */
+	.spec { margin-top: 48px; border-top: 1px dashed var(--line-strong); padding-top: 18px; }
+	.spec h2 {
+		font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+		text-transform: uppercase; color: var(--dim); font-weight: 400; margin: 0 0 14px;
+	}
+	.spec-row { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; margin-bottom: 18px; }
+	.banner {
+		display: flex; gap: 10px; align-items: baseline;
+		background: var(--danger-tint); border: 1px solid var(--danger);
+		border-radius: var(--radius-sm); padding: 10px 14px; font-size: 14px;
+	}
+	.banner b { color: var(--danger); }
+	.btn {
+		font-family: var(--body); font-size: 14px; font-weight: 600;
+		border-radius: var(--radius-sm); padding: 7px 16px; cursor: pointer;
+		border: 1px solid transparent; transition: background 0.12s;
+	}
+	.btn.primary { background: var(--accent); color: #fff; }
+	.btn.primary:hover { background: var(--accent-ink); }
+	.btn.ghost { background: none; border-color: var(--line-strong); color: var(--ink); }
+	.btn.subtle { background: none; color: var(--accent-ink); }
+	footer.colophon {
+		margin-top: 26px; font-family: var(--mono); font-size: 11px; color: var(--dim);
+	}
+</style>
+
+<div class="wrap">
+	<header class="site">
+		<div class="wordmark">Husby<span class="beam">gg</span>et</div>
+		<nav class="site">
+			<a href="#" aria-current="page">Översikt</a>
+			<a href="#">Inställningar</a>
+		</nav>
+	</header>
+
+	<section class="board" aria-label="Budget">
+		<div class="board-head">
+			<span class="eyebrow">Budget</span>
+			<span class="decisions-note">6 av 9 beslut fattade</span>
+		</div>
+		<div class="tiles">
+			<div class="tile">
+				<div class="label">Total budget</div>
+				<div class="value money">6 000 000 <small>kr</small></div>
+			</div>
+			<div class="tile">
+				<div class="label">Valt hittills</div>
+				<div class="value money">4 873 000 <small>kr</small></div>
+			</div>
+			<div class="tile kvar">
+				<div class="label">Kvar</div>
+				<div class="value money">1 127 000 <small>kr</small></div>
+			</div>
+		</div>
+		<div class="meter">
+			<div class="bar" role="img" aria-label="4 873 000 av 6 000 000 kronor valda (81 %)">
+				<div class="fill" style="width: 81%"></div>
+			</div>
+			<div class="scale"><span>0</span><span>81 % av budget</span><span class="money">6,0 mkr</span></div>
+		</div>
+	</section>
+
+	<section class="timeline" aria-label="Byggordning">
+		<h2 class="tl-title">Byggordning</h2>
+
+		<div class="step klar">
+			<div class="node" aria-hidden="true">✓</div>
+			<div class="card">
+				<div class="card-row">
+					<span class="name">Tomt</span>
+					<span class="pill klar">Klar</span>
+					<span class="cost money">1 495 000 kr</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="step klar">
+			<div class="node" aria-hidden="true">✓</div>
+			<div class="card">
+				<div class="card-row">
+					<span class="name">Bygglov &amp; anmälan</span>
+					<span class="pill klar">Klar</span>
+					<span class="cost money">78 000 kr</span>
+				</div>
+				<div class="note">Startbesked klart <b>2026-05-12</b>. Kontrollansvarig: BygglovsPartner AB.</div>
+			</div>
+		</div>
+
+		<div class="step pagar">
+			<div class="node">3</div>
+			<div class="card">
+				<div class="card-row">
+					<span class="name">Markarbeten</span>
+					<span class="pill pagar">Pågår</span>
+					<span class="cost money">350 000 kr</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="step pagar">
+			<div class="node">4</div>
+			<details class="card">
+				<summary>
+					<div class="card-row">
+						<span class="name">Grund</span>
+						<span class="pill pagar">Pågår</span>
+						<span class="sel">Platta på mark</span>
+						<span class="cost money">295 000 kr</span>
+						<span class="chip">2 alternativ</span>
+					</div>
+				</summary>
+				<div class="options">
+					<label class="opt vald">
+						<input type="radio" name="grund" checked>
+						<span><span class="o-name">Platta på mark</span><br><span class="o-desc">Isolerad betongplatta, ingår i totalentreprenad-offerten</span></span>
+						<span class="vald-chip">Vald</span>
+						<span class="o-cost money">295 000 kr</span>
+					</label>
+					<label class="opt">
+						<input type="radio" name="grund">
+						<span><span class="o-name">Krypgrund</span><br><span class="o-desc">Uteluftsventilerad, kräver fuktspärr</span></span>
+						<span class="o-cost money">240 000 kr</span>
+					</label>
+					<button class="add-opt" type="button">+ Lägg till alternativ</button>
+				</div>
+			</details>
+		</div>
+
+		<div class="step">
+			<div class="node">5</div>
+			<div class="card">
+				<div class="card-row">
+					<span class="name">Stomme &amp; resning</span>
+					<span class="pill ej">Ej påbörjad</span>
+					<span class="sel">Lösvirke</span>
+					<span class="cost money">1 150 000 kr</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="step">
+			<div class="node">6</div>
+			<details class="card" open>
+				<summary>
+					<div class="card-row">
+						<span class="name">Tak</span>
+						<span class="pill ej">Ej påbörjad</span>
+						<span class="sel">Betongpannor</span>
+						<span class="cost money">185 000 kr</span>
+						<span class="chip">3 alternativ</span>
+					</div>
+				</summary>
+				<div class="options">
+					<label class="opt vald">
+						<input type="radio" name="tak" checked>
+						<span><span class="o-name">Betongpannor</span><br><span class="o-desc">Benders Palema, 30 års garanti — offert från takfirman</span></span>
+						<span class="vald-chip">Vald</span>
+						<span class="o-cost money">185 000 kr</span>
+					</label>
+					<label class="opt">
+						<input type="radio" name="tak">
+						<span><span class="o-name">Plåttak</span><br><span class="o-desc">Klickfals, lättare för stommen, längre livslängd</span></span>
+						<span class="o-cost money">142 000 kr</span>
+					</label>
+					<label class="opt">
+						<input type="radio" name="tak">
+						<span><span class="o-name">Lertegel</span><br><span class="o-desc">Vittinge enkupigt — snyggast, dyrast</span></span>
+						<span class="o-cost money">265 000 kr</span>
+					</label>
+					<button class="add-opt" type="button">+ Lägg till alternativ</button>
+				</div>
+			</details>
+		</div>
+
+		<div class="step">
+			<div class="node">7</div>
+			<div class="card">
+				<div class="card-row">
+					<span class="name">Kök</span>
+					<span class="pill ej">Ej påbörjad</span>
+					<span class="sel">IKEA + snickeri</span>
+					<span class="cost money">195 000 kr</span>
+					<span class="chip">2 alternativ</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="step">
+			<div class="node">8</div>
+			<div class="card">
+				<div class="card-row">
+					<span class="name">Slutbesiktning</span>
+					<span class="pill ej">Ej påbörjad</span>
+					<span class="cost none">ingen kostnad</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="spec" aria-label="Designspecifikation">
+		<h2>Designspec — tillstånd &amp; komponenter</h2>
+		<div class="spec-row">
+			<div style="flex: 1; min-width: 260px;">
+				<div class="meter">
+					<div class="bar" role="img" aria-label="Över budget: 6 480 000 av 6 000 000 kronor">
+						<div class="fill" style="width: 88%; border-radius: 7px 0 0 7px;"></div>
+						<div class="overflow" style="width: 12%"></div>
+					</div>
+					<div class="scale"><span>Över budget-läge</span><span class="money">+480 000 kr</span></div>
+				</div>
+			</div>
+			<div class="banner"><b>Över budget:</b><span class="money">480 000 kr över taket — byt något val.</span></div>
+		</div>
+		<div class="spec-row">
+			<span class="pill ej">Ej påbörjad</span>
+			<span class="pill pagar">Pågår</span>
+			<span class="pill klar">Klar</span>
+			<button class="btn primary" type="button">Spara</button>
+			<button class="btn ghost" type="button">Avbryt</button>
+			<button class="btn subtle" type="button">Arkivera</button>
+		</div>
+		<footer class="colophon">
+			HUSBYGGET · byggritning-identitet · accent #1f639e · faluröd reserverad för över budget ·
+			Bahnschrift display · tabular-nums för belopp · ljust + mörkt läge
+		</footer>
+	</section>
+</div>

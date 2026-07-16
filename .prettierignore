@@ -5,6 +5,9 @@ yarn.lock
 bun.lock
 bun.lockb
 
+# Design reference (hand-formatted mockup)
+design/
+
 # Build output / generated
 .svelte-kit
 build
