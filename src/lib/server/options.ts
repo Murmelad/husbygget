@@ -69,6 +69,20 @@ export async function createOption(
 	return { option, autoSelected };
 }
 
+/** Every option (incl. archived), ordered by section then display order — for admin listing. */
+export function listAllOptions(db: Db): Promise<Option[]> {
+	return db
+		.select()
+		.from(options)
+		.orderBy(asc(options.sectionId), asc(options.sortOrder), asc(options.id));
+}
+
+/** A single option by id, or undefined (read helper for building log details). */
+export async function getOption(db: Db, id: number): Promise<Option | undefined> {
+	const rows = await db.select().from(options).where(eq(options.id, id)).limit(1);
+	return rows[0];
+}
+
 /** Update an option's editable fields (name / description / cost / url). */
 export async function updateOption(db: Db, id: number, data: OptionInput): Promise<void> {
 	const name = data.name.trim();
