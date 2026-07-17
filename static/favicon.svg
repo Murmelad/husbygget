@@ -1,20 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-	<!-- HUSBYGGET favicon — SMALL-SIZE variant of the byggritning mark (bolder dashes so
-	     the planned half survives 16 px tab bars). The large/hairline variant is logo.svg;
-	     keep the two in sync geometrically. Solid = byggt, dashed = planerat. -->
+	<!-- HUSBYGGET favicon (liten variant av logo.svg) — grövre måttlinje och fönsterstreck
+	     så de överlever 16 px. Håll geometrin i synk med logo.svg. -->
 	<rect width="64" height="64" rx="14" fill="#1f639e"/>
-	<!-- solid: grund + vänster vägg + vänster takfall — skarpa ändar, mjuka hörn -->
-	<path d="M 47 46 L 17 46 L 17 28 L 32 13"
-		fill="none" stroke="#fdfdfb" stroke-width="5"
+	<!-- måttlinje: nock till mark -->
+	<path d="M 8 5 V 47 M 5 5 H 11 M 5 47 H 11" stroke="#fdfdfb" stroke-width="1.8" fill="none"/>
+	<!-- tak, på väg ner -->
+	<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5"
 		stroke-linecap="butt" stroke-linejoin="round"/>
-	<!-- dashed: höger vägg — två grövre streck så de överlever 16 px -->
-	<path d="M 47 28 L 47 41"
-		fill="none" stroke="#fdfdfb" stroke-width="2.5"
-		stroke-linecap="butt"
-		stroke-dasharray="4 5"/>
-	<!-- planerat gavelfönster — grövre streck så det överlever 16 px -->
-	<rect x="29.6" y="22" width="6" height="6" fill="none"
+	<!-- väggar + grund -->
+	<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5"
+		stroke-linecap="butt" stroke-linejoin="round"/>
+	<!-- planerat fönster, centrerat ovanför dörren -->
+	<rect x="31" y="28" width="6" height="6" fill="none"
 		stroke="#fdfdfb" stroke-width="1.8" stroke-dasharray="2.5 1.5"/>
-	<!-- dörr (centrerad mellan väggarnas INNERkanter, inte mot nocken) -->
-	<rect x="28.6" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+	<!-- dörr -->
+	<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
 </svg>

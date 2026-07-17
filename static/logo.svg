@@ -1,21 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-	<!-- HUSBYGGET — byggritning icon. Drafting-blue tile; house outline in paper white:
-	     solid = byggt, dashed = planerat. Lit door = hem. -->
+	<!-- HUSBYGGET logotyp (stor variant) — "måttsatt nocklyft": taket svävar strax ovanför
+	     väggarna (på väg att läggas), måttlinje till vänster, planerat gavelfönster streckat.
+	     Liten variant med grövre linjer: favicon.svg — håll geometrin i synk. -->
 	<rect width="64" height="64" rx="14" fill="#1f639e"/>
-	<!-- solid: grund + vänster vägg + vänster takfall — skarpa ändar, mjuka hörn -->
-	<path d="M 47 46 L 17 46 L 17 28 L 32 13"
-		fill="none" stroke="#fdfdfb" stroke-width="5"
+	<!-- måttlinje: nock till mark -->
+	<path d="M 8 5 V 47 M 5 5 H 11 M 5 47 H 11" stroke="#fdfdfb" stroke-width="1" fill="none"/>
+	<!-- tak, på väg ner -->
+	<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5"
 		stroke-linecap="butt" stroke-linejoin="round"/>
-	<!-- dashed: höger vägg (det som ännu ritas) — tunnare än det byggda,
-	     indragen nertill så inget streck nuddar den solida grunden -->
-	<path d="M 47 28 L 47 41"
-		fill="none" stroke="#fdfdfb" stroke-width="0.85"
-		stroke-linecap="butt"
-		stroke-dasharray="1.8 3.8"/>
-	<!-- planerat gavelfönster — streckat likt den oritade halvan -->
-	<rect x="30" y="22" width="6" height="6" fill="none"
+	<!-- väggar + grund -->
+	<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5"
+		stroke-linecap="butt" stroke-linejoin="round"/>
+	<!-- planerat fönster, centrerat ovanför dörren -->
+	<rect x="31" y="28" width="6" height="6" fill="none"
 		stroke="#fdfdfb" stroke-width="0.85" stroke-dasharray="2 1"/>
-	<!-- dörr (dörr + fönster är centrerade mellan väggarnas INNERkanter,
-	     inte mot nocken — den tjocka väggen äter mer av interiören) -->
-	<rect x="29" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+	<!-- dörr -->
+	<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
 </svg>
