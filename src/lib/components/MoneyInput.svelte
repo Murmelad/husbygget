@@ -20,7 +20,8 @@
 	} = $props();
 
 	const nf = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 0 });
-	let text = $state(value != null ? nf.format(value) : '');
+	// Writable derived: tracks the prop across reloads; typing overrides it locally.
+	let text = $derived(value != null ? nf.format(value) : '');
 
 	function oninput(e: Event) {
 		const el = e.currentTarget as HTMLInputElement;
