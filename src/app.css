@@ -156,6 +156,22 @@ html {
 	scrollbar-gutter: stable;
 }
 
+/* Thin, token-colored scrollbars — hairlines on drawing paper, follows the theme.
+   (Standard properties only: on Chromium they take precedence over ::-webkit-*.) */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--line-strong) transparent;
+}
+
+/* Textareas grow with their content (field-sizing) up to a cap, then scroll with the
+   themed scrollbar above. rows="" remains the fallback floor in older engines. */
+textarea {
+	field-sizing: content;
+	min-height: 3.5rem;
+	max-height: 11rem;
+	resize: vertical;
+}
+
 body {
 	background: var(--ground);
 	color: var(--ink);

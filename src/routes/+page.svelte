@@ -184,7 +184,7 @@
 			<input type="hidden" name="sectionId" value={s.id} />
 			<textarea
 				name="notes"
-				rows="2"
+				rows="3"
 				class="w-full rounded-ctl border border-line bg-panel-2 px-2 py-1 text-[13px] text-ink"
 				>{s.notes}</textarea
 			>

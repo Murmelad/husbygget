@@ -53,6 +53,9 @@ tile values, timeline numbers; `font-sans` (Segoe UI/system) for body; `font-mon
    `variant="danger"` with a two-step inline confirm.
 6. Wide content scrolls in its own `overflow-x-auto` container; the page never
    scrolls sideways. Mobile-first — card rows `flex-wrap` on narrow screens.
+7. Scrollbars are thin and token-colored app-wide (`scrollbar-color: var(--line-strong)`,
+   set globally in app.css). Textareas auto-grow with content (`field-sizing: content`)
+   to `max-height: 11rem`, then scroll — don't override per-field without reason.
 
 ## Page anatomy
 
