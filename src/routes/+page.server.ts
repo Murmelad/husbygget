@@ -4,6 +4,7 @@ import { isSectionStatus, STATUS_LABELS } from '$lib/status';
 import { dbFromPlatform } from '$lib/server/platform';
 import { ensureSeed, getActiveScenarioId } from '$lib/server/scenarios';
 import { clearSelection, getSummary, selectOption } from '$lib/server/budget';
+import { countBySection } from '$lib/server/journal';
 import { getOption } from '$lib/server/options';
 import { saveNotes, setStatus } from '$lib/server/sections';
 import { logDecision } from '$lib/server/log';
@@ -20,7 +21,11 @@ export const load: PageServerLoad = async ({ platform }) => {
 	const db = dbFromPlatform(platform);
 	await ensureSeed(db);
 	const scenarioId = await getActiveScenarioId(db);
-	return { summary: await getSummary(db, scenarioId) };
+	const [summary, journalCounts] = await Promise.all([
+		getSummary(db, scenarioId),
+		countBySection(db)
+	]);
+	return { summary, journalCounts };
 };
 
 export const actions: Actions = {

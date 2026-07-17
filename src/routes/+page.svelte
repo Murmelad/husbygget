@@ -12,6 +12,7 @@
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
 	const summary = $derived(data.summary);
+	const journalBySection = $derived(new Map(data.journalCounts.map((c) => [c.sectionId, c])));
 
 	type Row = PageData['summary']['sections'][number];
 	type Sec = Row['section'];
@@ -189,6 +190,23 @@
 	</details>
 {/snippet}
 
+<!-- Dagbok link chip — shown under the card when the section has journal entries. -->
+{#snippet journalChip(s: Sec)}
+	{@const jc = journalBySection.get(s.id)}
+	{#if jc}
+		<div class="px-4 pb-3">
+			<a
+				href="/dagbok?avsnitt={s.id}"
+				class="inline-flex items-center rounded-full border border-line-strong px-2.5 py-0.5 text-xs whitespace-nowrap text-accent-ink no-underline"
+			>
+				Dagbok ({jc.entries}){jc.files > 0
+					? ` · ${jc.files} ${jc.files === 1 ? 'fil' : 'filer'}`
+					: ''}
+			</a>
+		</div>
+	{/if}
+{/snippet}
+
 <section class="mt-6 rounded-card border border-line bg-panel p-5 shadow-card" aria-label="Budget">
 	<div class="flex items-baseline justify-between gap-3">
 		<span class="eyebrow">Budget</span>
@@ -270,11 +288,15 @@
 						{/snippet}
 						{@render optionList(row)}
 					</Details>
-					<div class="mt-1">{@render noteBlock(row.section)}</div>
+					<div class="mt-1">
+						{@render noteBlock(row.section)}
+						{@render journalChip(row.section)}
+					</div>
 				{:else}
 					<div class="rounded-card border border-line bg-panel shadow-card">
 						{@render cardRow(row)}
 						{@render noteBlock(row.section)}
+						{@render journalChip(row.section)}
 					</div>
 				{/if}
 			</div>

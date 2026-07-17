@@ -10,6 +10,8 @@ import { getDb } from './db';
 export interface AppEnv {
 	/** D1 binding (`husbygget-db`). */
 	DB: D1Database;
+	/** R2 binding (`husbygget-files`) — dagbok file attachments. */
+	BUCKET: R2Bucket;
 	/** Cloudflare Access team domain, e.g. `foo.cloudflareaccess.com`. */
 	CF_ACCESS_TEAM_DOMAIN?: string;
 	/** Cloudflare Access application AUD tag (empty = fail closed in prod). */
@@ -39,4 +41,16 @@ export function dbFromPlatform(platform: App.Platform | undefined) {
 		throw error(500, 'D1 binding "DB" unavailable — run via `npm run dev` or `wrangler`.');
 	}
 	return getDb(env.DB);
+}
+
+/**
+ * The R2 bucket for dagbok file attachments.
+ * Throws a clear 500 if the `BUCKET` binding is missing (run via `npm run dev` / `wrangler`).
+ */
+export function bucketFromPlatform(platform: App.Platform | undefined): R2Bucket {
+	const env = getEnv(platform);
+	if (!env?.BUCKET) {
+		throw error(500, 'R2 binding "BUCKET" unavailable — run via `npm run dev` or `wrangler`.');
+	}
+	return env.BUCKET;
 }

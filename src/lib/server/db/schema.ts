@@ -150,6 +150,47 @@ export const decisionLog = sqliteTable(
 );
 
 // ---------------------------------------------------------------------------
+// Journal (Dagbok) — build-diary entries with optional file attachments. An entry
+// carries free text and/or files and may be linked to a section (nullable FK, so an
+// entry survives a section it once referenced being removed). Files live in R2; only
+// the metadata + object key is stored here.
+// ---------------------------------------------------------------------------
+
+export const journalEntries = sqliteTable(
+	'journal_entries',
+	{
+		id: pk(),
+		sectionId: integer('section_id').references(() => sections.id),
+		body: text('body').notNull().default(''),
+		userEmail: text('user_email'),
+		createdAt: createdAt()
+	},
+	(t) => [
+		index('journal_entries_section_id_idx').on(t.sectionId),
+		index('journal_entries_created_at_idx').on(t.createdAt)
+	]
+);
+
+export const journalFiles = sqliteTable(
+	'journal_files',
+	{
+		id: pk(),
+		entryId: integer('entry_id')
+			.notNull()
+			.references(() => journalEntries.id),
+		r2Key: text('r2_key').notNull(),
+		name: text('name').notNull(),
+		contentType: text('content_type').notNull().default('application/octet-stream'),
+		size: integer('size').notNull().default(0),
+		createdAt: createdAt()
+	},
+	(t) => [
+		uniqueIndex('journal_files_r2_key_idx').on(t.r2Key),
+		index('journal_files_entry_id_idx').on(t.entryId)
+	]
+);
+
+// ---------------------------------------------------------------------------
 // Inferred row types
 // ---------------------------------------------------------------------------
 
@@ -164,3 +205,7 @@ export type Selection = typeof selections.$inferSelect;
 export type NewSelection = typeof selections.$inferInsert;
 export type DecisionLogEntry = typeof decisionLog.$inferSelect;
 export type NewDecisionLogEntry = typeof decisionLog.$inferInsert;
+export type JournalEntry = typeof journalEntries.$inferSelect;
+export type NewJournalEntry = typeof journalEntries.$inferInsert;
+export type JournalFile = typeof journalFiles.$inferSelect;
+export type NewJournalFile = typeof journalFiles.$inferInsert;

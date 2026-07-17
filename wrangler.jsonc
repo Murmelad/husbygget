@@ -14,6 +14,8 @@
 		"CF_ACCESS_TEAM_DOMAIN": "lucky-silence-8229.cloudflareaccess.com",
 		"CF_ACCESS_AUD": "71817c2fb822e2844f1adccee81ace13affdde375f3816e902ed9b8f24e91106" // Access app 'husbygget.nu' audience (comma-separate to rotate)
 	},
+	// R2: dagbok file attachments (private — streamed via /dagbok/fil/[id] behind Access).
+	"r2_buckets": [{ "binding": "BUCKET", "bucket_name": "husbygget-files" }],
 	"d1_databases": [
 		{
 			"binding": "DB",
