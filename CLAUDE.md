@@ -83,7 +83,10 @@ Reference mockup: `design/mockup.html`.
 - Prettier: tabs, single quotes, no trailing comma, width 100. Keep `npm run check` 0/0.
 - tsconfig has `checkJs: false` — required: with `main` set, `wrangler types` pulls the
   built bundle into the TS program (the ai-gw gotcha). Don't re-enable.
-- `design/` is prettier-ignored (hand-formatted mockup).
+- `design/` is prettier-ignored (hand-formatted mockup, logo variants, document template).
+- HTML documents attached in Anteckningar follow `design/DOKUMENT.md` (template:
+  `design/dokumentmall.html` — canonical style, dark mode, TOC with `target="_self"`
+  anchors, versioned title block; revisions overwrite the SAME R2 key).
 - After changing `wrangler.jsonc`, run `npm run gen` or `check` fails.
 - Repo: `github.com/Murmelad/husbygget`, push over SSH as the **murmelad** GitHub
   account; commit identity `murmelad <murmelad@users.noreply.github.com>` (repo-local,
