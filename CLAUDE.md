@@ -24,10 +24,17 @@ The repo also carries the BUILD's state; keep this section current so a fresh se
 knows where the project stands:
 
 - **Site:** north of Skåre, Trelleborgs kommun, OUTSIDE detaljplan, on Söderslätt
-  farmland. **POSITIVT FÖRHANDSBESKED exists (2026)** — valid 2 years from decision
-  date, non-extendable; bygglov application must land inside that window and meet the
-  besked's villkor. Biggest original risk (jordbruksmark/lokaliseringsprövning) is
-  thereby cleared.
+  farmland. **Tomt ≈ 3 000+ m²** (drives the VA tomtyteavgift hard). **POSITIVT
+  FÖRHANDSBESKED exists (2026)** — valid 2 years from decision date, non-extendable;
+  bygglov application must land inside that window and meet the besked's villkor.
+  Biggest original risk (jordbruksmark/lokaliseringsprövning) is thereby cleared.
+- **VA (verified 2026-07-17):** Trelleborg's taxa components at 2022 level = servis
+  55 066 + FP 49 559 + tomtyta 31,88 kr/m² + bostadsenhet 22 316 → ≈222 600 kr for
+  3 000 m²; plan carries 240 000 (indexed estimate). **LTA pump: kommunen provides,
+  owns and maintains it** (verified in riktlinjerna) — owner pays elinstallation +
+  drift; plan's pump line = 10 000 kr with egen pump 50 000 as reserve option.
+  Outstanding with kommunen: exact 2026 figures + whether the AVTALSANSLUTNING
+  (outside verksamhetsområdet) follows taxa/riktlinjer.
 - **Leaning generalentreprenad** (own architect + one GE) — decision not yet ticked in
   the app (Entreprenadform section, 3 zero-cost options).
 - **Kunskapsbank** (research docs, attached in Anteckningar; index = the section-less
