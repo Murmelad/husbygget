@@ -6,11 +6,12 @@
 	<path d="M 47 46 L 17 46 L 17 28 L 32 13"
 		fill="none" stroke="#fdfdfb" stroke-width="5"
 		stroke-linecap="round" stroke-linejoin="round"/>
-	<!-- dashed: höger takfall + höger vägg (det som ännu ritas) — tunnare än det byggda -->
-	<path d="M 32 13 L 47 28 L 47 45"
-		fill="none" stroke="#fdfdfb" stroke-width="3.5"
+	<!-- dashed: höger takfall + höger vägg (det som ännu ritas) — tunnare än det byggda,
+	     indragen i båda ändar så inget streck nuddar den solida halvan -->
+	<path d="M 35.2 16.2 L 47 28 L 47 41"
+		fill="none" stroke="#fdfdfb" stroke-width="2.5"
 		stroke-linecap="round" stroke-linejoin="round"
-		stroke-dasharray="6 8"/>
+		stroke-dasharray="3 3.675"/>
 	<!-- dörr -->
 	<rect x="28" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
 </svg>
