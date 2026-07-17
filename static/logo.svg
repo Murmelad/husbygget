@@ -6,12 +6,12 @@
 	<path d="M 47 46 L 17 46 L 17 28 L 32 13"
 		fill="none" stroke="#fdfdfb" stroke-width="5"
 		stroke-linecap="butt" stroke-linejoin="round"/>
-	<!-- dashed: höger takfall + höger vägg (det som ännu ritas) — tunnare än det byggda,
-	     indragen i båda ändar så inget streck nuddar den solida halvan -->
-	<path d="M 35.2 16.2 L 47 28 L 47 41"
+	<!-- dashed: höger vägg (det som ännu ritas) — tunnare än det byggda,
+	     indragen nertill så inget streck nuddar den solida grunden -->
+	<path d="M 47 28 L 47 41"
 		fill="none" stroke="#fdfdfb" stroke-width="0.85"
-		stroke-linecap="butt" stroke-linejoin="round"
-		stroke-dasharray="1.8 2.85"/>
+		stroke-linecap="butt"
+		stroke-dasharray="1.8 3.8"/>
 	<!-- planerat gavelfönster — streckat likt den oritade halvan -->
 	<rect x="30" y="22" width="6" height="6" fill="none"
 		stroke="#fdfdfb" stroke-width="0.85" stroke-dasharray="2 1"/>
