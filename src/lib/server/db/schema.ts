@@ -150,7 +150,7 @@ export const decisionLog = sqliteTable(
 );
 
 // ---------------------------------------------------------------------------
-// Journal (Dagbok) — build-diary entries with optional file attachments. An entry
+// Journal (Anteckningar) — build-diary entries with optional file attachments. An entry
 // carries free text and/or files and may be linked to a section (nullable FK, so an
 // entry survives a section it once referenced being removed). Files live in R2; only
 // the metadata + object key is stored here.

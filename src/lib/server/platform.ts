@@ -10,7 +10,7 @@ import { getDb } from './db';
 export interface AppEnv {
 	/** D1 binding (`husbygget-db`). */
 	DB: D1Database;
-	/** R2 binding (`husbygget-files`) — dagbok file attachments. */
+	/** R2 binding (`husbygget-files`) — anteckningar file attachments. */
 	BUCKET: R2Bucket;
 	/** Cloudflare Access team domain, e.g. `foo.cloudflareaccess.com`. */
 	CF_ACCESS_TEAM_DOMAIN?: string;
@@ -44,7 +44,7 @@ export function dbFromPlatform(platform: App.Platform | undefined) {
 }
 
 /**
- * The R2 bucket for dagbok file attachments.
+ * The R2 bucket for anteckningar file attachments.
  * Throws a clear 500 if the `BUCKET` binding is missing (run via `npm run dev` / `wrangler`).
  */
 export function bucketFromPlatform(platform: App.Platform | undefined): R2Bucket {

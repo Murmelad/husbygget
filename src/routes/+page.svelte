@@ -190,16 +190,16 @@
 	</details>
 {/snippet}
 
-<!-- Dagbok link chip — shown under the card when the section has journal entries. -->
+<!-- Anteckningar link chip — shown under the card when the section has journal entries. -->
 {#snippet journalChip(s: Sec)}
 	{@const jc = journalBySection.get(s.id)}
 	{#if jc}
 		<div class="px-4 pb-3">
 			<a
-				href="/dagbok?avsnitt={s.id}"
+				href="/anteckningar?avsnitt={s.id}"
 				class="inline-flex items-center rounded-full border border-line-strong px-2.5 py-0.5 text-xs whitespace-nowrap text-accent-ink no-underline"
 			>
-				Dagbok ({jc.entries}){jc.files > 0
+				Anteckningar ({jc.entries}){jc.files > 0
 					? ` · ${jc.files} ${jc.files === 1 ? 'fil' : 'filer'}`
 					: ''}
 			</a>

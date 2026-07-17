@@ -9,9 +9,10 @@ build sections (Tomt → Bygglov → … → Slutbesiktning) where a section opt
 **cost options**: 0 options = pure task, 1 = fixed cost line (auto-selected), ≥2 = a
 swappable decision (Tak: betongpannor vs plåttak). Exactly one option is selected per
 section per scenario; a global total budget drives the Valt hittills / Kvar dashboard,
-updating on every swap. A **Dagbok** (build journal) holds entries with text and/or R2
-file attachments, optionally linked to a section (`/dagbok`, files streamed via
-`/dagbok/fil/[id]`). UI strings are **Swedish**; code/identifiers English.
+updating on every swap. **Anteckningar** (the build journal) holds entries with text
+and/or R2 file attachments, optionally linked to a section (`/anteckningar`, files
+streamed via `/anteckningar/fil/[id]`). UI strings are **Swedish**; code/identifiers
+English.
 
 The whole app sits behind **Cloudflare Access** — no in-app auth, no public routes.
 
@@ -19,7 +20,7 @@ The whole app sits behind **Cloudflare Access** — no in-app auth, no public ro
 
 SvelteKit 2 / Svelte 5 (runes) · Tailwind 4 (CSS-first, no tailwind.config) · Drizzle
 ORM/drizzle-kit (sqlite) · D1 `husbygget-db` (id `68027d00-37cc-46d9-bdf1-844c0bae6209`) ·
-R2 `husbygget-files` (binding `BUCKET`, private — dagbok attachments) ·
+R2 `husbygget-files` (binding `BUCKET`, private — anteckningar attachments) ·
 `@sveltejs/adapter-cloudflare` in **Workers static-assets mode** (`wrangler.jsonc`:
 `main` + `assets`; config inlined in `vite.config.ts`, `svelte.config.js` empty) ·
 compat flag `nodejs_als` · Node 22. Same Cloudflare account as the sibling projects

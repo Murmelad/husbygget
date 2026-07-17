@@ -100,7 +100,7 @@
 <!-- Filter chips -->
 <div class="mt-5 flex flex-wrap gap-2" aria-label="Filtrera på avsnitt">
 	<a
-		href="/dagbok"
+		href="/anteckningar"
 		aria-current={data.activeSectionId == null ? 'page' : undefined}
 		class="{chipBase} {data.activeSectionId == null ? chipActive : chipIdle}"
 	>
@@ -108,7 +108,7 @@
 	</a>
 	{#each data.sections as s (s.id)}
 		<a
-			href="/dagbok?avsnitt={s.id}"
+			href="/anteckningar?avsnitt={s.id}"
 			aria-current={data.activeSectionId === s.id ? 'page' : undefined}
 			class="{chipBase} {data.activeSectionId === s.id ? chipActive : chipIdle}"
 		>
@@ -133,7 +133,7 @@
 					{/if}
 					{#if entry.sectionId != null}
 						<a
-							href="/dagbok?avsnitt={entry.sectionId}"
+							href="/anteckningar?avsnitt={entry.sectionId}"
 							class="inline-flex items-center rounded-full border border-line-strong px-2.5 py-0.5 text-xs whitespace-nowrap text-accent-ink no-underline"
 						>
 							{sectionName.get(entry.sectionId) ?? `Avsnitt #${entry.sectionId}`}
@@ -184,7 +184,7 @@
 					<div class="mt-3 grid gap-1.5">
 						{#each files as f (f.id)}
 							<a
-								href="/dagbok/fil/{f.id}"
+								href="/anteckningar/fil/{f.id}"
 								class="flex flex-wrap items-baseline gap-2 text-sm text-accent-ink hover:underline"
 							>
 								<span class="min-w-0 break-all">{f.name}</span>
