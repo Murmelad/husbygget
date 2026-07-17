@@ -1,0 +1,292 @@
+<title>Husbygget — logotypvarianter</title>
+<style>
+	:root {
+		--ground: #f2f3ef; --panel: #fdfdfb; --ink: #212b33; --dim: #5d6b74;
+		--line: #dde1da; --accent: #1f639e;
+	}
+	@media (prefers-color-scheme: dark) {
+		:root { --ground: #16202b; --panel: #1d2630; --ink: #e5eaee; --dim: #93a1ad; --line: #33404d; --accent: #5493cc; }
+	}
+	:root[data-theme='dark'] { --ground: #16202b; --panel: #1d2630; --ink: #e5eaee; --dim: #93a1ad; --line: #33404d; --accent: #5493cc; }
+	:root[data-theme='light'] { --ground: #f2f3ef; --panel: #fdfdfb; --ink: #212b33; --dim: #5d6b74; --line: #dde1da; --accent: #1f639e; }
+	* { box-sizing: border-box; }
+	body { margin: 0; background: var(--ground); color: var(--ink); font: 15px/1.5 'Segoe UI', system-ui, sans-serif; }
+	.wrap { max-width: 1020px; margin: 0 auto; padding: 28px 20px 64px; }
+	h1 { font-family: Bahnschrift, 'Arial Narrow', system-ui, sans-serif; font-size: 22px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 2px solid var(--ink); padding-bottom: 12px; }
+	p.lead { color: var(--dim); max-width: 62ch; }
+	.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 24px; }
+	.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+	.card h2 { margin: 0 0 2px; font-size: 15px; }
+	.card h2 b { color: var(--accent); font-family: 'Cascadia Mono', Consolas, monospace; margin-right: 6px; }
+	.card p { margin: 0 0 12px; font-size: 12.5px; color: var(--dim); }
+	.sizes { display: flex; align-items: flex-end; gap: 14px; }
+	.sz { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+	.sz small { font-family: 'Cascadia Mono', Consolas, monospace; font-size: 10px; color: var(--dim); }
+	svg { display: block; }
+</style>
+
+<div class="wrap">
+	<h1>Husbygget — logotypvarianter</h1>
+	<p class="lead">
+		Femton tolkningar av «ett hus som håller på att byggas». Varje variant visas i 96, 32
+		och 16 px — bedöm 96:an som logotyp och 16:an som flik-ikon. Säg numret så blir den
+		(eller en hybrid av två) den skarpa.
+	</p>
+
+	<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+		<defs>
+			<!-- V16 VALD: blueprint mattsatt nocklyft -->
+			<symbol id="v16" viewBox="0 0 64 64">
+				<clipPath id="tile16"><rect width="64" height="64" rx="14"/></clipPath>
+				<rect width="64" height="64" rx="14" fill="#17549c"/>
+				<g clip-path="url(#tile16)" stroke="#fdfdfb" stroke-width="0.5" opacity="0.18">
+					<path d="M 8 0 V 64 M 16 0 V 64 M 24 0 V 64 M 32 0 V 64 M 40 0 V 64 M 48 0 V 64 M 56 0 V 64"/>
+					<path d="M 0 8 H 64 M 0 16 H 64 M 0 24 H 64 M 0 32 H 64 M 0 40 H 64 M 0 48 H 64 M 0 56 H 64"/>
+				</g>
+				<path d="M 8 5 V 47 M 5 5 H 11 M 5 47 H 11" stroke="#fdfdfb" stroke-width="1" fill="none"/>
+				<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<rect x="31" y="28" width="6" height="6" fill="none" stroke="#fdfdfb" stroke-width="0.85" stroke-dasharray="2 1"/>
+				<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V17 VALD favicon-variant: samma märke, ren platta -->
+			<symbol id="v17" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#17549c"/>
+				<path d="M 8 5 V 47 M 5 5 H 11 M 5 47 H 11" stroke="#fdfdfb" stroke-width="1.8" fill="none"/>
+				<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<rect x="31" y="28" width="6" height="6" fill="none" stroke="#fdfdfb" stroke-width="1.8" stroke-dasharray="2.5 1.5"/>
+				<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- A: favicon-platta, med fönster, UTAN måttlinje -->
+			<symbol id="va" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#17549c"/>
+				<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<rect x="31" y="28" width="6" height="6" fill="none" stroke="#fdfdfb" stroke-width="1.8" stroke-dasharray="2.5 1.5"/>
+				<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- B: favicon-platta, UTAN fönster, UTAN måttlinje -->
+			<symbol id="vb" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#17549c"/>
+				<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- C: blueprint-rutnät, UTAN fönster, MED måttlinje -->
+			<symbol id="vc" viewBox="0 0 64 64">
+				<clipPath id="tilec"><rect width="64" height="64" rx="14"/></clipPath>
+				<rect width="64" height="64" rx="14" fill="#17549c"/>
+				<g clip-path="url(#tilec)" stroke="#fdfdfb" stroke-width="0.5" opacity="0.18">
+					<path d="M 8 0 V 64 M 16 0 V 64 M 24 0 V 64 M 32 0 V 64 M 40 0 V 64 M 48 0 V 64 M 56 0 V 64"/>
+					<path d="M 0 8 H 64 M 0 16 H 64 M 0 24 H 64 M 0 32 H 64 M 0 40 H 64 M 0 48 H 64 M 0 56 H 64"/>
+				</g>
+				<path d="M 8 5 V 47 M 5 5 H 11 M 5 47 H 11" stroke="#fdfdfb" stroke-width="1" fill="none"/>
+				<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- D: blueprint-rutnät, UTAN fönster, UTAN måttlinje -->
+			<symbol id="vd" viewBox="0 0 64 64">
+				<clipPath id="tiled"><rect width="64" height="64" rx="14"/></clipPath>
+				<rect width="64" height="64" rx="14" fill="#17549c"/>
+				<g clip-path="url(#tiled)" stroke="#fdfdfb" stroke-width="0.5" opacity="0.18">
+					<path d="M 8 0 V 64 M 16 0 V 64 M 24 0 V 64 M 32 0 V 64 M 40 0 V 64 M 48 0 V 64 M 56 0 V 64"/>
+					<path d="M 0 8 H 64 M 0 16 H 64 M 0 24 H 64 M 0 32 H 64 M 0 40 H 64 M 0 48 H 64 M 0 56 H 64"/>
+				</g>
+				<path d="M 15 21 L 32 7 L 49 21" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 17 29 L 17 47 L 47 47 L 47 29" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<rect x="28" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- E: "10 med linjer" — helt hus på blueprint-rutnät -->
+			<symbol id="ve" viewBox="0 0 64 64">
+				<clipPath id="tilee"><rect width="64" height="64" rx="14"/></clipPath>
+				<rect width="64" height="64" rx="14" fill="#17549c"/>
+				<g clip-path="url(#tilee)" stroke="#fdfdfb" stroke-width="0.5" opacity="0.18">
+					<path d="M 8 0 V 64 M 16 0 V 64 M 24 0 V 64 M 32 0 V 64 M 40 0 V 64 M 48 0 V 64 M 56 0 V 64"/>
+					<path d="M 0 8 H 64 M 0 16 H 64 M 0 24 H 64 M 0 32 H 64 M 0 40 H 64 M 0 48 H 64 M 0 56 H 64"/>
+				</g>
+				<path d="M 18 46 L 18 29 L 32 15 L 46 29 L 46 46 Z" fill="none" stroke="#fdfdfb" stroke-width="4" stroke-linejoin="round"/>
+				<rect x="28" y="36" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- F: blueprint-rutnät, MED måttlinje, SOLITT fönster (raka linjer) -->
+			<symbol id="vf" viewBox="0 0 64 64">
+				<clipPath id="tilef"><rect width="64" height="64" rx="14"/></clipPath>
+				<rect width="64" height="64" rx="14" fill="#17549c"/>
+				<g clip-path="url(#tilef)" stroke="#fdfdfb" stroke-width="0.5" opacity="0.18">
+					<path d="M 8 0 V 64 M 16 0 V 64 M 24 0 V 64 M 32 0 V 64 M 40 0 V 64 M 48 0 V 64 M 56 0 V 64"/>
+					<path d="M 0 8 H 64 M 0 16 H 64 M 0 24 H 64 M 0 32 H 64 M 0 40 H 64 M 0 48 H 64 M 0 56 H 64"/>
+				</g>
+				<path d="M 8 5 V 47 M 5 5 H 11 M 5 47 H 11" stroke="#fdfdfb" stroke-width="1" fill="none"/>
+				<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<rect x="31" y="28" width="6" height="6" fill="none" stroke="#fdfdfb" stroke-width="1.4"/>
+				<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V1 Klassisk halva -->
+			<symbol id="v1" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 47 46 L 17 46 L 17 28 L 32 13" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M 32 13 L 47 28 L 47 45" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5.5 5.5"/>
+				<rect x="28" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V2 Hörnvinkel -->
+			<symbol id="v2" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 47 46 L 17 46 L 17 28 L 32 13" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 35.2 16.2 L 47 28 L 47 41" fill="none" stroke="#fdfdfb" stroke-width="2.5" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="7 4.3 10 3.7 4.7 100"/>
+				<rect x="28.6" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V3 Hårfin perforering -->
+			<symbol id="v3" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 47 46 L 17 46 L 17 28 L 32 13" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 35.2 16.2 L 47 28 L 47 41" fill="none" stroke="#fdfdfb" stroke-width="0.85" stroke-linecap="butt" stroke-dasharray="1.8 2.85"/>
+				<rect x="30" y="22" width="6" height="6" fill="none" stroke="#fdfdfb" stroke-width="0.85" stroke-dasharray="2 1"/>
+				<rect x="29" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V4 Utan tak -->
+			<symbol id="v4" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 47 46 L 17 46 L 17 28 L 32 13" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 47 28 L 47 41" fill="none" stroke="#fdfdfb" stroke-width="2.5" stroke-linecap="butt" stroke-dasharray="4 5"/>
+				<rect x="29.6" y="22" width="6" height="6" fill="none" stroke="#fdfdfb" stroke-width="1.8" stroke-dasharray="2.5 1.5"/>
+				<rect x="28.6" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V5 Prickar -->
+			<symbol id="v5" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 47 46 L 17 46 L 17 28 L 32 13" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M 32 13 L 47 28 L 47 45" fill="none" stroke="#fdfdfb" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 9.45"/>
+				<rect x="28" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V6 Takstol -->
+			<symbol id="v6" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 14 46 L 14 27 L 32 12 L 50 27 L 50 46 Z" fill="none" stroke="#fdfdfb" stroke-width="4.5" stroke-linejoin="round"/>
+				<path d="M 20 29.5 H 44 M 32 12 V 29.5" fill="none" stroke="#fdfdfb" stroke-width="2"/>
+				<path d="M 32 29.5 L 22 46 M 32 29.5 L 42 46" fill="none" stroke="#fdfdfb" stroke-width="2"/>
+			</symbol>
+			<!-- V7 Kranlyft -->
+			<symbol id="v7" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 17 30 L 17 47 L 47 47 L 47 30" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 13 24 L 32 9 L 51 24" fill="none" stroke="#fdfdfb" stroke-width="4.5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 32 0 V 8" stroke="#fdfdfb" stroke-width="1.6"/>
+				<rect x="28" y="36" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V8 Måttsatt -->
+			<symbol id="v8" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 17 48 L 17 30 L 32 17 L 47 30 L 47 48 Z" fill="none" stroke="#fdfdfb" stroke-width="4.5" stroke-linejoin="round"/>
+				<path d="M 17 8 H 47 M 17 5 V 11 M 47 5 V 11" stroke="#fdfdfb" stroke-width="1.4"/>
+				<rect x="28" y="38" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V9 Fylld / kontur -->
+			<symbol id="v9" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 15 46 L 15 27 L 32 13 L 32 46 Z" fill="#fdfdfb"/>
+				<path d="M 32 13 L 49 27 L 49 46 L 32 46" fill="none" stroke="#fdfdfb" stroke-width="2.2" stroke-linejoin="round"/>
+				<rect x="21" y="34" width="7" height="12" rx="1.2" fill="#1f639e"/>
+			</symbol>
+			<!-- V10 Rutnät -->
+			<symbol id="v10" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<g fill="#fdfdfb" opacity="0.28">
+					<circle cx="12" cy="12" r="1"/><circle cx="24" cy="12" r="1"/><circle cx="36" cy="12" r="1"/><circle cx="48" cy="12" r="1"/>
+					<circle cx="12" cy="24" r="1"/><circle cx="52" cy="24" r="1"/>
+					<circle cx="12" cy="36" r="1"/><circle cx="52" cy="36" r="1"/>
+					<circle cx="12" cy="48" r="1"/><circle cx="24" cy="52" r="1"/><circle cx="36" cy="52" r="1"/><circle cx="52" cy="48" r="1"/>
+				</g>
+				<path d="M 18 46 L 18 29 L 32 15 L 46 29 L 46 46 Z" fill="none" stroke="#fdfdfb" stroke-width="4" stroke-linejoin="round"/>
+				<rect x="28" y="36" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V11 Progress-fyllnad -->
+			<symbol id="v11" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<clipPath id="husclip"><path d="M 16 47 L 16 28 L 32 14 L 48 28 L 48 47 Z"/></clipPath>
+				<rect x="16" y="31" width="32" height="16" fill="#fdfdfb" clip-path="url(#husclip)"/>
+				<path d="M 16 47 L 16 28 L 32 14 L 48 28 L 48 47 Z" fill="none" stroke="#fdfdfb" stroke-width="3.5" stroke-linejoin="round"/>
+				<rect x="28" y="36" width="8" height="11" rx="1.5" fill="#1f639e"/>
+			</symbol>
+			<!-- V12 Grund först -->
+			<symbol id="v12" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 14 46 H 50" stroke="#fdfdfb" stroke-width="6" stroke-linecap="round"/>
+				<path d="M 18 41 L 18 28 L 32 14 L 46 28 L 46 41" fill="none" stroke="#fdfdfb" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="4.5 3.5"/>
+			</symbol>
+			<!-- V13 Halvt tak -->
+			<symbol id="v13" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 47 28 L 47 46 L 17 46 L 17 28 L 32 13" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 35.5 16.5 L 46 27" fill="none" stroke="#fdfdfb" stroke-width="2.5" stroke-linecap="butt" stroke-dasharray="4.5 3.2"/>
+				<rect x="29.6" y="22" width="6" height="6" fill="none" stroke="#fdfdfb" stroke-width="1.8" stroke-dasharray="2.5 1.5"/>
+				<rect x="28.6" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V14 Nocklyft -->
+			<symbol id="v14" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 17 32 L 17 47 L 47 47 L 47 32" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 15 25 L 32 11 L 49 25" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<rect x="28" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+			<!-- V15 Skissad dubbellinje -->
+			<symbol id="v15" viewBox="0 0 64 64">
+				<rect width="64" height="64" rx="14" fill="#1f639e"/>
+				<path d="M 47 46 L 17 46 L 17 28 L 32 13" fill="none" stroke="#fdfdfb" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"/>
+				<path d="M 33.5 14.5 L 47 26 L 47 43" fill="none" stroke="#fdfdfb" stroke-width="1.1" stroke-linejoin="round"/>
+				<path d="M 33 18.5 L 43.5 27.5 L 43.5 43" fill="none" stroke="#fdfdfb" stroke-width="1.1" stroke-linejoin="round"/>
+				<rect x="28.6" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+			</symbol>
+		</defs>
+	</svg>
+
+	<div class="grid">
+		<div class="card" style="border-color: var(--accent); border-width: 2px;"><h2><b>★</b>VALD — Blueprint (logotyp)</h2><p>Måttsatt nocklyft på ritningsblått med vitt rutnät. Detta är logo.svg + touch-ikonen.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v16"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v16"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v16"/></svg><small>16</small></span></div></div>
+		<div class="card" style="border-color: var(--accent); border-width: 2px;"><h2><b>★</b>VALD — favicon-variant</h2><p>Samma märke på ren platta (rutnätet blir brus i 16 px), grövre fönster/måttlinje. Detta är favicon.svg — fliken.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v17"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v17"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v17"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>A</b>Favicon utan måttlinje</h2><p>Ren platta, nocklyft + streckat fönster — måttlinjen borttagen.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#va"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#va"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#va"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>B</b>Favicon utan fönster &amp; måttlinje</h2><p>Bara nocklyft + dörr — renast möjliga flikmärke.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#vb"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#vb"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#vb"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>C</b>Blueprint utan fönster</h2><p>Rutnät + måttlinje + nocklyft + dörr, inget fönster.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#vc"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#vc"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#vc"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>D</b>Blueprint utan fönster &amp; måttlinje</h2><p>Bara huset på rutnätet — märket centrerat och större.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#vd"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#vd"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#vd"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>E</b>«10 med linjer»</h2><p>Gamla rutnätsvarianten (helt hus) men med riktiga blueprint-linjer i stället för punkter.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#ve"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#ve"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#ve"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>F</b>Blueprint med SOLITT fönster</h2><p>Som valda logotypen men fönstret ritat med raka heldragna linjer (streckningen var det som såg skevt ut).</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#vf"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#vf"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#vf"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>1</b>Klassisk halva</h2><p>Solid vänster, streckad höger — mjuka rundade ändar (ursprungsversionen).</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v1"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v1"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v1"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>2</b>Hörnvinkel</h2><p>Tre placerade hårda streck som viker runt takfoten. Bäst i liten storlek hittills.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v2"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v2"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v2"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>3</b>Hårfin perforering</h2><p>Tunna små streck + streckat gavelfönster. Elegantast i stor storlek.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v3"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v3"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v3"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>4</b>Utan tak</h2><p>Bara den streckade väggen kvar — mest minimal (nuvarande).</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v4"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v4"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v4"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>5</b>Prickar</h2><p>Punkter i stället för streck längs den planerade halvan.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v5"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v5"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v5"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>6</b>Takstol</h2><p>Huset i stomresningsfasen — synlig takstol och stödben, ingen dörr ännu.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v6"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v6"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v6"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>7</b>Kranlyft</h2><p>Taket sänks på plats i en lina uppifrån.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v7"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v7"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v7"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>8</b>Måttsatt</h2><p>Färdig kontur med måttlinje ovanför — ren ritningsestetik.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v8"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v8"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v8"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>9</b>Fylld / kontur</h2><p>Byggt = massivt, planerat = kontur. Fyllnad i stället för streckning.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v9"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v9"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v9"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>10</b>Rutnätspapper</h2><p>Helt hus på ritningsrutnät av svaga punkter.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v10"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v10"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v10"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>11</b>Progress-fyllnad</h2><p>Huset fylls nerifrån som en mätare — budgetappens själ i en bild.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v11"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v11"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v11"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>12</b>Grund först</h2><p>Bara plattan är gjuten — hela huset ovanför är streckat.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v12"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v12"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v12"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>13</b>Halvt tak</h2><p>Allt byggt utom höger takfall (+ planerat fönster) — inversen av nr 4.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v13"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v13"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v13"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>14</b>Nocklyft</h2><p>Taket svävar strax ovanför väggarna — på väg att läggas, helt utan streckning.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v14"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v14"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v14"/></svg><small>16</small></span></div></div>
+		<div class="card"><h2><b>15</b>Skissad dubbellinje</h2><p>Planerade delen ritad med dubbla tunna konturlinjer, som väggar på en plan.</p>
+			<div class="sizes"><span class="sz"><svg width="96" height="96"><use href="#v15"/></svg><small>96</small></span><span class="sz"><svg width="32" height="32"><use href="#v15"/></svg><small>32</small></span><span class="sz"><svg width="16" height="16"><use href="#v15"/></svg><small>16</small></span></div></div>
+	</div>
+</div>

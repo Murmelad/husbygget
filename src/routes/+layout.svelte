@@ -24,9 +24,21 @@
 	<header class="flex items-baseline gap-6 border-b-2 border-ink pt-[22px] pb-3.5">
 		<a
 			href="/"
-			class="font-display text-[22px] font-bold tracking-[0.14em] text-ink uppercase no-underline"
+			class="flex items-center gap-2.5 font-display text-[22px] font-bold tracking-[0.14em] text-ink uppercase no-underline"
 		>
-			Husby<span class="text-accent">gg</span>et
+			<!-- Logotypen: helt hus på ren ritningsblå platta (headervarianten) -->
+			<svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" class="shrink-0">
+				<rect width="64" height="64" rx="14" fill="#17549c" />
+				<path
+					d="M 18 46 L 18 29 L 32 15 L 46 29 L 46 46 Z"
+					fill="none"
+					stroke="#fdfdfb"
+					stroke-width="4"
+					stroke-linejoin="round"
+				/>
+				<rect x="28" y="36" width="8" height="10" rx="1.5" fill="#fdfdfb" />
+			</svg>
+			<span>Husby<span class="text-accent">gg</span>et</span>
 		</a>
 		<nav class="ml-auto flex gap-[18px]">
 			{#each nav as item (item.href)}

@@ -1,19 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-	<!-- HUSBYGGET favicon (liten variant av logo.svg) — grövre måttlinje och fönsterstreck
-	     så de överlever 16 px. Håll geometrin i synk med logo.svg. -->
-	<!-- samma ritningsblå som logo.svg; rutnätet utelämnas — blir bara brus i 16 px -->
+	<!-- HUSBYGGET favicon — nocklyft + dörr, inget fönster, ingen måttlinje.
+	     Samma ritningsblå som logo.svg (stora varianten med rutnät + måttlinje). -->
 	<rect width="64" height="64" rx="14" fill="#17549c"/>
-	<!-- måttlinje: nock till mark -->
-	<path d="M 8 5 V 47 M 5 5 H 11 M 5 47 H 11" stroke="#fdfdfb" stroke-width="1.8" fill="none"/>
 	<!-- tak, på väg ner -->
-	<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5"
+	<path d="M 15 21 L 32 7 L 49 21" fill="none" stroke="#fdfdfb" stroke-width="5"
 		stroke-linecap="butt" stroke-linejoin="round"/>
 	<!-- väggar + grund -->
-	<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5"
+	<path d="M 17 29 L 17 47 L 47 47 L 47 29" fill="none" stroke="#fdfdfb" stroke-width="5"
 		stroke-linecap="butt" stroke-linejoin="round"/>
-	<!-- planerat fönster, centrerat ovanför dörren -->
-	<rect x="31" y="28" width="6" height="6" fill="none"
-		stroke="#fdfdfb" stroke-width="1.8" stroke-dasharray="2.5 1.5"/>
 	<!-- dörr -->
-	<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
+	<rect x="28" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
 </svg>
