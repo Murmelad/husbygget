@@ -106,6 +106,9 @@ Bygglov.").
 - `<Details open? class?>` with `{#snippet summary()}…{/snippet}` + children — the
   disclosure primitive (decision cards, admin edit panels).
 - `<EmptyState class?>` — dashed muted panel.
+- `<MoneyInput name id? value? required? placeholder? class?>` — SEK input that live-formats
+  with sv-SE thousand grouping (parity with `formatSEK`). Use for ALL cost/budget fields;
+  the server's `intOf()` strips whitespace before parsing.
 
 Shared modules: `$lib/status` (`SECTION_STATUSES`, `SectionStatus`, `STATUS_LABELS`,
 `isSectionStatus`) and `$lib/money` (`formatSEK`, `formatMkr`). The Drizzle schema

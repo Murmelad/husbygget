@@ -27,10 +27,16 @@ import { logDecision } from '$lib/server/log';
 import type { Option } from '$lib/server/db/schema';
 import type { Actions, PageServerLoad } from './$types';
 
-/** Parse an integer form field; null when absent/blank/non-integer. */
+/**
+ * Parse an integer form field; null when absent/blank/non-integer. Strips ALL
+ * whitespace first (incl. nbsp/narrow-nbsp) — MoneyInput submits sv-SE-grouped
+ * amounts like "1 500 000".
+ */
 function intOf(v: FormDataEntryValue | null): number | null {
-	if (typeof v !== 'string' || v.trim() === '') return null;
-	const n = Number(v);
+	if (typeof v !== 'string') return null;
+	const cleaned = v.replace(/\s+/g, '');
+	if (cleaned === '') return null;
+	const n = Number(cleaned);
 	return Number.isInteger(n) ? n : null;
 }
 function strOf(v: FormDataEntryValue | null): string {

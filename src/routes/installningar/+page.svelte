@@ -4,6 +4,7 @@
 	import StatusBadge from '$lib/components/StatusBadge.svelte';
 	import Details from '$lib/components/Details.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import MoneyInput from '$lib/components/MoneyInput.svelte';
 	import type { PageData, ActionData } from './$types';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
@@ -28,15 +29,11 @@
 	<form method="POST" action="?/setBudget" use:enhance class="mt-2 flex flex-wrap items-end gap-3">
 		<div class="flex flex-col gap-1">
 			<label for="total" class="text-[13px] text-dim">Total budget (kr)</label>
-			<input
+			<MoneyInput
 				id="total"
 				name="total"
-				type="number"
-				min="0"
-				step="1"
-				inputmode="numeric"
 				value={data.totalBudget}
-				class="money w-48 rounded-ctl border border-line bg-panel-2 px-2 py-1 font-display text-lg text-ink"
+				class="w-48 rounded-ctl border border-line bg-panel-2 px-2 py-1 font-display text-lg text-ink"
 			/>
 		</div>
 		<Button variant="primary" size="md">Spara</Button>
@@ -59,15 +56,11 @@
 		</div>
 		<div class="flex flex-col gap-1">
 			<label for="new-section-cost" class="text-[13px] text-dim">Kostnad (kr, valfritt)</label>
-			<input
+			<MoneyInput
 				id="new-section-cost"
 				name="cost"
-				type="number"
-				min="0"
-				step="1"
-				inputmode="numeric"
 				placeholder="lämna tomt för att lägga alternativ senare"
-				class="{inputCls} money w-64"
+				class="{inputCls} w-64"
 			/>
 		</div>
 		<Button variant="primary" size="md">Lägg till avsnitt</Button>
@@ -281,15 +274,11 @@
 														<label for="ocost-{o.id}" class="text-[12px] text-dim"
 															>Kostnad (kr)</label
 														>
-														<input
+														<MoneyInput
 															id="ocost-{o.id}"
 															name="cost"
-															type="number"
-															min="0"
-															step="1"
-															inputmode="numeric"
 															value={o.cost}
-															class="money {inputCls} w-full"
+															class="{inputCls} w-full"
 														/>
 													</div>
 												</div>
@@ -416,15 +405,12 @@
 										</div>
 										<div class="flex w-40 flex-col gap-1">
 											<label for="ncost-{s.id}" class="text-[12px] text-dim">Kostnad (kr)</label>
-											<input
+											<MoneyInput
 												id="ncost-{s.id}"
 												name="cost"
-												type="number"
-												min="0"
-												step="1"
-												value="0"
-												inputmode="numeric"
-												class="money {inputCls} w-full"
+												value={0}
+												required
+												class="{inputCls} w-full"
 											/>
 										</div>
 									</div>
