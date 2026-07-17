@@ -9,7 +9,7 @@
 	<!-- dashed: höger takfall + höger vägg (det som ännu ritas) — tunnare än det byggda,
 	     indragen i båda ändar så inget streck nuddar den solida halvan -->
 	<path d="M 35.2 16.2 L 47 28 L 47 41"
-		fill="none" stroke="#fdfdfb" stroke-width="2.5"
+		fill="none" stroke="#fdfdfb" stroke-width="0.85"
 		stroke-linecap="butt" stroke-linejoin="round"
 		stroke-dasharray="1.8 2.85"/>
 	<!-- dörr -->
