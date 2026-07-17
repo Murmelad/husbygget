@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
 	<!-- HUSBYGGET favicon (liten variant av logo.svg) — grövre måttlinje och fönsterstreck
 	     så de överlever 16 px. Håll geometrin i synk med logo.svg. -->
-	<rect width="64" height="64" rx="14" fill="#1f639e"/>
+	<!-- samma ritningsblå som logo.svg; rutnätet utelämnas — blir bara brus i 16 px -->
+	<rect width="64" height="64" rx="14" fill="#17549c"/>
 	<!-- måttlinje: nock till mark -->
 	<path d="M 8 5 V 47 M 5 5 H 11 M 5 47 H 11" stroke="#fdfdfb" stroke-width="1.8" fill="none"/>
 	<!-- tak, på väg ner -->

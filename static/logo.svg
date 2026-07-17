@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-	<!-- HUSBYGGET logotyp (stor variant) — "måttsatt nocklyft": taket svävar strax ovanför
-	     väggarna (på väg att läggas), måttlinje till vänster, planerat gavelfönster streckat.
-	     Liten variant med grövre linjer: favicon.svg — håll geometrin i synk. -->
-	<rect width="64" height="64" rx="14" fill="#1f639e"/>
-	<!-- måttlinje: nock till mark -->
+	<!-- Måttsatt nocklyft på riktigt ritningsblått med vitt rutnät -->
+	<defs>
+		<clipPath id="tile"><rect width="64" height="64" rx="14"/></clipPath>
+	</defs>
+	<rect width="64" height="64" rx="14" fill="#17549c"/>
+	<g clip-path="url(#tile)" stroke="#fdfdfb" stroke-width="0.5" opacity="0.18">
+		<path d="M 8 0 V 64 M 16 0 V 64 M 24 0 V 64 M 32 0 V 64 M 40 0 V 64 M 48 0 V 64 M 56 0 V 64"/>
+		<path d="M 0 8 H 64 M 0 16 H 64 M 0 24 H 64 M 0 32 H 64 M 0 40 H 64 M 0 48 H 64 M 0 56 H 64"/>
+	</g>
 	<path d="M 8 5 V 47 M 5 5 H 11 M 5 47 H 11" stroke="#fdfdfb" stroke-width="1" fill="none"/>
-	<!-- tak, på väg ner -->
 	<path d="M 17 19 L 34 5 L 51 19" fill="none" stroke="#fdfdfb" stroke-width="5"
 		stroke-linecap="butt" stroke-linejoin="round"/>
-	<!-- väggar + grund -->
 	<path d="M 19 27 L 19 47 L 49 47 L 49 27" fill="none" stroke="#fdfdfb" stroke-width="5"
 		stroke-linecap="butt" stroke-linejoin="round"/>
-	<!-- planerat fönster, centrerat ovanför dörren -->
 	<rect x="31" y="28" width="6" height="6" fill="none"
 		stroke="#fdfdfb" stroke-width="0.85" stroke-dasharray="2 1"/>
-	<!-- dörr -->
 	<rect x="30" y="37" width="8" height="10" rx="1.5" fill="#fdfdfb"/>
 </svg>
