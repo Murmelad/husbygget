@@ -3,7 +3,7 @@ import { formatSEK } from '$lib/money';
 import { isSectionStatus, STATUS_LABELS } from '$lib/status';
 import { dbFromPlatform } from '$lib/server/platform';
 import { ensureSeed, getActiveScenarioId } from '$lib/server/scenarios';
-import { getSummary, selectOption } from '$lib/server/budget';
+import { clearSelection, getSummary, selectOption } from '$lib/server/budget';
 import { getOption } from '$lib/server/options';
 import { saveNotes, setStatus } from '$lib/server/sections';
 import { logDecision } from '$lib/server/log';
@@ -50,6 +50,26 @@ export const actions: Actions = {
 			optionId,
 			detail: opt ? `${opt.name} (${formatSEK(opt.cost)})` : undefined
 		});
+		return { ok: true };
+	},
+
+	// Unselect the chosen option for a section (the cost stops counting).
+	clearSelection: async ({ request, platform, locals }) => {
+		const db = dbFromPlatform(platform);
+		const scenarioId = await getActiveScenarioId(db);
+		const form = await request.formData();
+		const sectionId = intOf(form.get('sectionId'));
+		if (sectionId === null || sectionId <= 0) return fail(400, { error: 'Ogiltigt avsnitt.' });
+		const cleared = await clearSelection(db, scenarioId, sectionId);
+		if (cleared) {
+			await logDecision(db, {
+				action: 'clear_selection',
+				userEmail: locals.userEmail ?? null,
+				scenarioId,
+				sectionId,
+				detail: 'Valet rensades'
+			});
+		}
 		return { ok: true };
 	},
 

@@ -142,12 +142,24 @@
 				<Button size="sm">Välj markerat</Button>
 			</div>
 		</noscript>
-		<a
-			href="/installningar"
-			class="rounded-ctl border border-dashed border-line-strong px-3 py-2 text-left text-[13px] text-dim hover:text-accent-ink"
-		>
-			+ Lägg till alternativ
-		</a>
+		<div class="flex flex-wrap items-center gap-2">
+			<a
+				href="/installningar"
+				class="flex-1 rounded-ctl border border-dashed border-line-strong px-3 py-2 text-left text-[13px] text-dim hover:text-accent-ink"
+			>
+				+ Lägg till alternativ
+			</a>
+			{#if row.selectedOptionId != null}
+				<Button
+					variant="subtle"
+					size="sm"
+					formaction="?/clearSelection"
+					title="Ta bort valet — kostnaden räknas inte"
+				>
+					Rensa val
+				</Button>
+			{/if}
+		</div>
 	</form>
 {/snippet}
 

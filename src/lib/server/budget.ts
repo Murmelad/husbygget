@@ -1,4 +1,4 @@
-import { asc, eq } from 'drizzle-orm';
+import { and, asc, eq } from 'drizzle-orm';
 import type { getDb } from './db';
 import { options, sections, selections, type Option, type Section } from './db/schema';
 import { getSettings } from './scenarios';
@@ -48,6 +48,22 @@ export async function selectOption(
 			target: [selections.scenarioId, selections.sectionId],
 			set: { optionId, updatedAt: new Date() }
 		});
+}
+
+/**
+ * Unselect whatever is chosen for (scenario, section) — the section stops counting
+ * and Översikt shows "Inget val". Returns true if a selection was removed.
+ */
+export async function clearSelection(
+	db: Db,
+	scenarioId: number,
+	sectionId: number
+): Promise<boolean> {
+	const removed = await db
+		.delete(selections)
+		.where(and(eq(selections.scenarioId, scenarioId), eq(selections.sectionId, sectionId)))
+		.returning();
+	return removed.length > 0;
 }
 
 /**
