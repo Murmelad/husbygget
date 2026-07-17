@@ -16,6 +16,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Husbygget</title>
+</svelte:head>
+
 <div class="mx-auto max-w-3xl px-5">
 	<header class="flex items-baseline gap-6 border-b-2 border-ink pt-[22px] pb-3.5">
 		<a

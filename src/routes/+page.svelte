@@ -173,7 +173,7 @@
 			{#if s.notes}
 				<span class="min-w-0 flex-1">{s.notes}</span>
 			{:else}
-				<span class="min-w-0 flex-1 italic">Ingen anteckning</span>
+				<span class="min-w-0 flex-1 italic">Ingen kommentar</span>
 			{/if}
 			<span class="shrink-0 text-accent-ink">Ändra</span>
 		</summary>
@@ -185,7 +185,7 @@
 				class="w-full rounded-ctl border border-line bg-panel-2 px-2 py-1 text-[13px] text-ink"
 				>{s.notes}</textarea
 			>
-			<div><Button variant="secondary" size="sm">Spara anteckning</Button></div>
+			<div><Button variant="secondary" size="sm">Spara kommentar</Button></div>
 		</form>
 	</details>
 {/snippet}

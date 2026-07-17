@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<!-- HUSBYGGET — byggritning icon. Drafting-blue tile; house outline in paper white:
+	     solid = byggt, dashed = planerat. Lit door = hem. -->
+	<rect width="64" height="64" rx="14" fill="#1f639e"/>
+	<!-- solid: grund + vänster vägg + vänster takfall -->
+	<path d="M 47 46 L 17 46 L 17 28 L 32 13"
+		fill="none" stroke="#fdfdfb" stroke-width="5"
+		stroke-linecap="round" stroke-linejoin="round"/>
+	<!-- dashed: höger takfall + höger vägg (det som ännu ritas) -->
+	<path d="M 32 13 L 47 28 L 47 45"
+		fill="none" stroke="#fdfdfb" stroke-width="5"
+		stroke-linecap="round" stroke-linejoin="round"
+		stroke-dasharray="5.5 5.5"/>
+	<!-- dörr -->
+	<rect x="28" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
+</svg>
