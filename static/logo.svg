@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-	<!-- HUSBYGGET favicon — SMALL-SIZE variant of the byggritning mark (bolder dashes so
-	     the planned half survives 16 px tab bars). The large/hairline variant is logo.svg;
-	     keep the two in sync geometrically. Solid = byggt, dashed = planerat. -->
+	<!-- HUSBYGGET — byggritning icon. Drafting-blue tile; house outline in paper white:
+	     solid = byggt, dashed = planerat. Lit door = hem. -->
 	<rect width="64" height="64" rx="14" fill="#1f639e"/>
 	<!-- solid: grund + vänster vägg + vänster takfall — skarpa ändar, mjuka hörn -->
 	<path d="M 47 46 L 17 46 L 17 28 L 32 13"
 		fill="none" stroke="#fdfdfb" stroke-width="5"
 		stroke-linecap="butt" stroke-linejoin="round"/>
-	<!-- dashed: tre placerade streck (tak, hörnvinkel, vägg), indragna från den solida halvan -->
+	<!-- dashed: höger takfall + höger vägg (det som ännu ritas) — tunnare än det byggda,
+	     indragen i båda ändar så inget streck nuddar den solida halvan -->
 	<path d="M 35.2 16.2 L 47 28 L 47 41"
-		fill="none" stroke="#fdfdfb" stroke-width="2.5"
+		fill="none" stroke="#fdfdfb" stroke-width="0.85"
 		stroke-linecap="butt" stroke-linejoin="round"
-		stroke-dasharray="7 4.3 10 3.7 4.7 100"/>
+		stroke-dasharray="1.8 2.85"/>
 	<!-- dörr -->
 	<rect x="28" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
 </svg>
