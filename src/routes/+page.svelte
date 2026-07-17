@@ -47,11 +47,14 @@
 	</form>
 {/snippet}
 
-{#snippet node(s: Sec, n: number)}
+<!-- Node bubble. Fixed/task cards (variable height: kommentar inside) center it on the
+     whole card; decision cards pin it to the header row so it stays put when expanded. -->
+{#snippet node(s: Sec, n: number, centered: boolean)}
 	<div
 		aria-hidden="true"
-		class="absolute top-2 -left-[46px] grid size-8 place-items-center rounded-full border-2 font-display text-sm font-bold {s.status ===
-		'klar'
+		class="absolute -left-[46px] grid size-8 place-items-center rounded-full border-2 font-display text-sm font-bold {centered
+			? 'top-1/2 -translate-y-1/2'
+			: 'top-2'} {s.status === 'klar'
 			? 'border-klar bg-klar text-white'
 			: s.status === 'pagar'
 				? 'border-pagar bg-panel text-pagar-ink'
@@ -273,14 +276,29 @@
 		Byggordning
 	</h2>
 	<section class="relative mt-4 pl-[46px]" aria-label="Byggordning">
-		<div
-			class="pointer-events-none absolute top-2 bottom-2 left-[15px] w-0.5 bg-line-strong"
-			aria-hidden="true"
-		></div>
-
+		<!-- The rule runs node-to-node as per-step segments (upper: from step top to node
+		     center; lower: from node center through the gap), so it STARTS at the first
+		     bubble and ENDS in the last one whatever the card heights are. -->
 		{#each summary.sections as row, i (row.section.id)}
+			{@const centered = row.options.length < 2}
 			<div class="relative mb-3.5">
-				{@render node(row.section, i + 1)}
+				{#if i > 0}
+					<div
+						class="pointer-events-none absolute top-0 -left-[31px] w-0.5 bg-line-strong {centered
+							? 'h-1/2'
+							: 'h-6'}"
+						aria-hidden="true"
+					></div>
+				{/if}
+				{#if i < summary.sections.length - 1}
+					<div
+						class="pointer-events-none absolute -bottom-3.5 -left-[31px] w-0.5 bg-line-strong {centered
+							? 'top-1/2'
+							: 'top-6'}"
+						aria-hidden="true"
+					></div>
+				{/if}
+				{@render node(row.section, i + 1, centered)}
 				{#if row.options.length >= 2}
 					<Details class="group">
 						{#snippet summary()}
