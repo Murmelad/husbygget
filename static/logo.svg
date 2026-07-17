@@ -12,6 +12,9 @@
 		fill="none" stroke="#fdfdfb" stroke-width="0.85"
 		stroke-linecap="butt" stroke-linejoin="round"
 		stroke-dasharray="1.8 2.85"/>
+	<!-- planerat gavelfönster — streckat likt den oritade halvan -->
+	<rect x="29" y="22" width="6" height="6" fill="none"
+		stroke="#fdfdfb" stroke-width="0.85" stroke-dasharray="2 1"/>
 	<!-- dörr -->
 	<rect x="28" y="35" width="8" height="11" rx="1.5" fill="#fdfdfb"/>
 </svg>
