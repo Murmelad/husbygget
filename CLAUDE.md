@@ -75,11 +75,12 @@ compat flag `nodejs_als` · Node 22. Same Cloudflare account as the sibling proj
 Deploy = Cloudflare **Workers Builds** git integration: push to `main` → `npm run build`
 → `npx wrangler deploy` (verified working; every push auto-deploys in ~2 min).
 **Migrations are NOT auto-applied** — run `npm run db:migrate:remote` after schema
-changes (keep migrations additive). Manual deploy fallback: `npm run build &&
+changes (keep migrations additive). Manual deploy fallback (use when a Workers Build
+sits stuck in "Initializing build environment" — has happened): `npm run build &&
 WRANGLER_SEND_METRICS=false npx wrangler deploy` — metrics MUST be off on this machine
-(wrangler's metrics.json hits EPERM), and the deploy exits 1 at the final zone-routes
-step (the local API token lacks husbygget.nu zone perms) **but the deployment IS
-created** — verify with `npx wrangler deployments list` (prints OLDEST first).
+(wrangler's metrics.json hits EPERM). Since the API token got zone perms (2026-07-17)
+the deploy completes cleanly incl. the husbygget.nu custom-domain step; verify with
+`npx wrangler deployments list` (prints OLDEST first).
 
 ```sh
 npm run dev                # local; D1 emulated (Access bypassed in dev)
