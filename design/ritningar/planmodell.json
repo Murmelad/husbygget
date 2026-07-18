@@ -1,0 +1,32 @@
+{
+	"version": "v0-skiss",
+	"datum": "2026-07-18",
+	"inspiration": "A-hus Villa Skanör (2-plan, 203 kvm) — anpassad",
+	"antaganden": [
+		"Entréfasad mot söder; 'vänster om entrén' = väster (sett utifrån mot entrén)",
+		"Huvudkropp 12,0 × 9,0 m, två fulla plan, sadeltak 27°, nock i öst-västlig riktning",
+		"Garagelänga väster: 7,2 × 6,6 m, två plan (garage nere, lägenhet ~35 kvm uppe)",
+		"Lägenhetens interndörr till huvudhusets övervåning (allt sammanbyggt = en huvudbyggnad)",
+		"Uterum öster om entrén: 4,8 × 3,6 m, platt tak = balkong med räcke 1,1 m",
+		"Master bedroom övervåning SÖ med skjutparti mot balkongen",
+		"Rumshöjd 2,5 m (bv 2,7), yttervägg 400 mm, innervägg 120 mm",
+		"FG+ okänt tills nybyggnadskartan finns"
+	],
+	"byggnad": {
+		"huvudkropp": { "b": 12000, "d": 9000, "placering_x": 7200 },
+		"garagelanga": { "b": 7200, "d": 6600, "placering_x": 0, "indrag_norr": 1500 },
+		"uterum": { "b": 4800, "d": 3600, "placering_x_relativ": 13500 },
+		"vagg": { "ytter": 400, "inner": 120 },
+		"rumshojd": { "bv": 2700, "ov": 2500 },
+		"taklutning": 27,
+		"takform": "sadeltak, nock öst-väst; garagelänga lägre nock",
+		"fasad": { "material": "TBD", "kulor": "TBD" },
+		"tak": { "material": "TBD (betongpannor i planen)", "kulor": "TBD" }
+	},
+	"fragor_till_agarna": [
+		"Vilken Villa Skanör? (antagit A-hus 2-planaren, inte Trivselhus enplans)",
+		"Garage: en eller två bilar? (antagit två, 7,2 m bred länga)",
+		"Lägenheten: egen entré utifrån också, eller bara via garaget/huvudhuset?",
+		"OBS: en lägenhet = extra bostadsenhet — påverkar VA-avgiften (+22 316 kr bostadsenhetsavgift, 2022-nivå) och ska anges i bygglovet; förhandsbeskedets villkor bör kollas mot tvåbostadsupplägget"
+	]
+}
