@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 297" font-family="Arial, Helvetica, sans-serif">
+	<!-- HUSBYGGET ritningsmall — A3 liggande, 1 enhet = 1 mm på papper.
+	     Geometri läggs i <g id="geometri" transform="scale(0.01) …"> (1:100)
+	     eller scale(0.0025) (1:400). Annoteringar i pappers-mm.
+	     Fyll i ritningshuvudets fält och rätt skalstock; ta bort oanvänd. -->
+	<rect width="420" height="297" fill="#ffffff"/>
+	<!-- Ram -->
+	<rect x="10" y="10" width="400" height="277" fill="none" stroke="#000" stroke-width="0.35"/>
+
+	<!-- ==== GEOMETRI: byt ut innehållet ==== -->
+	<g id="geometri" transform="translate(20,20) scale(0.01)">
+		<!-- exempel: yttervägg 15600×9000, väggtjocklek 400 (modell-mm) -->
+		<rect x="0" y="0" width="15600" height="9000" fill="none" stroke="#000" stroke-width="50"/>
+	</g>
+	<!-- ==== ANNOTERINGAR (pappers-mm) ==== -->
+	<g id="annoteringar"></g>
+
+	<!-- Norrpil (situationsplan/markplanering; ta bort på övriga) -->
+	<g id="norrpil" transform="translate(395,30)">
+		<circle r="8" fill="none" stroke="#000" stroke-width="0.25"/>
+		<path d="M 0 6 L 0 -6 M 0 -6 L -2.2 -1.5 M 0 -6 L 2.2 -1.5" stroke="#000" stroke-width="0.5" fill="none"/>
+		<text y="-10" text-anchor="middle" font-size="3.5">N</text>
+	</g>
+
+	<!-- Skalstock 1:100 — 5 m i verkligheten = 50 mm på papper -->
+	<g id="skalstock-100" transform="translate(20,278)">
+		<rect x="0" y="0" width="10" height="2" fill="#000"/>
+		<rect x="10" y="0" width="10" height="2" fill="none" stroke="#000" stroke-width="0.18"/>
+		<rect x="20" y="0" width="10" height="2" fill="#000"/>
+		<rect x="30" y="0" width="10" height="2" fill="none" stroke="#000" stroke-width="0.18"/>
+		<rect x="40" y="0" width="10" height="2" fill="#000"/>
+		<text x="0" y="-1.2" font-size="2.5" text-anchor="middle">0</text>
+		<text x="10" y="-1.2" font-size="2.5" text-anchor="middle">1</text>
+		<text x="20" y="-1.2" font-size="2.5" text-anchor="middle">2</text>
+		<text x="30" y="-1.2" font-size="2.5" text-anchor="middle">3</text>
+		<text x="40" y="-1.2" font-size="2.5" text-anchor="middle">4</text>
+		<text x="50" y="-1.2" font-size="2.5" text-anchor="middle">5 m</text>
+	</g>
+	<!-- Skalstock 1:400 — 20 m = 50 mm (aktivera för situationsplan, ta bort 1:100) -->
+	<g id="skalstock-400" transform="translate(20,278)" display="none">
+		<rect x="0" y="0" width="12.5" height="2" fill="#000"/>
+		<rect x="12.5" y="0" width="12.5" height="2" fill="none" stroke="#000" stroke-width="0.18"/>
+		<rect x="25" y="0" width="12.5" height="2" fill="#000"/>
+		<rect x="37.5" y="0" width="12.5" height="2" fill="none" stroke="#000" stroke-width="0.18"/>
+		<text x="0" y="-1.2" font-size="2.5" text-anchor="middle">0</text>
+		<text x="12.5" y="-1.2" font-size="2.5" text-anchor="middle">5</text>
+		<text x="25" y="-1.2" font-size="2.5" text-anchor="middle">10</text>
+		<text x="37.5" y="-1.2" font-size="2.5" text-anchor="middle">15</text>
+		<text x="50" y="-1.2" font-size="2.5" text-anchor="middle">20 m</text>
+	</g>
+
+	<!-- Ritningshuvud, nedre högra hörnet -->
+	<g id="ritningshuvud" transform="translate(300,257)" font-size="2.8">
+		<rect x="0" y="0" width="110" height="30" fill="none" stroke="#000" stroke-width="0.35"/>
+		<line x1="0" y1="7.5" x2="110" y2="7.5" stroke="#000" stroke-width="0.18"/>
+		<line x1="0" y1="15" x2="110" y2="15" stroke="#000" stroke-width="0.18"/>
+		<line x1="0" y1="22.5" x2="110" y2="22.5" stroke="#000" stroke-width="0.18"/>
+		<line x1="55" y1="15" x2="55" y2="30" stroke="#000" stroke-width="0.18"/>
+		<text x="2" y="3.2" font-size="1.8" fill="#000">FASTIGHETSBETECKNING</text>
+		<text x="2" y="6.5" id="rh-fastighet" font-weight="bold">FYLL I</text>
+		<text x="2" y="10.7" font-size="1.8">RITNINGSTYP</text>
+		<text x="2" y="14" id="rh-typ" font-weight="bold">Planritning</text>
+		<text x="2" y="18.2" font-size="1.8">SKALA / FORMAT</text>
+		<text x="2" y="21.5" id="rh-skala">1:100 (A3)</text>
+		<text x="57" y="18.2" font-size="1.8">DATUM / REV</text>
+		<text x="57" y="21.5" id="rh-datum">2026-MM-DD</text>
+		<text x="2" y="25.7" font-size="1.8">UPPRÄTTAD AV</text>
+		<text x="2" y="29" id="rh-av">FYLL I</text>
+		<text x="57" y="25.7" font-size="1.8">BLAD</text>
+		<text x="57" y="29" id="rh-blad">A-01</text>
+	</g>
+</svg>
