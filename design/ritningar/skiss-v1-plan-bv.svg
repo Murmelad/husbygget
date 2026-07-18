@@ -2,14 +2,14 @@
 	<rect width="420" height="297" fill="#ffffff"/>
 	<rect x="10" y="10" width="400" height="277" fill="none" stroke="#000" stroke-width="0.35"/>
 	<text x="20" y="22" font-size="5" font-weight="bold">PLAN — BOTTENVÅNING</text>
-	<text x="20" y="28" font-size="3" fill="#666">SKISS V0 — EJ BYGGLOVSHANDLING · Skanör-inspirerad · skala 1:100 (A3)</text>
+	<text x="20" y="28" font-size="3" fill="#666">SKISS V1 — EJ BYGGLOVSHANDLING · Skanör-inspirerad · skala 1:100 (A3)</text>
 	<text x="405" y="285" font-size="2.5" text-anchor="end">Husbygget · 2026-07-18 · skiss av Claude</text>
 
 	<!-- NORR upp -->
 	<g transform="translate(395,35)">
 		<circle r="7" fill="none" stroke="#000" stroke-width="0.25"/>
-		<path d="M 0 5 L 0 -5 M 0 -5 L -2 -1.5 M 0 -5 L 2 -1.5" stroke="#000" stroke-width="0.5" fill="none"/>
-		<text y="-9.5" text-anchor="middle" font-size="3">N</text>
+		<path d="M 5 0 L -5 0 M -5 0 L -1.5 -2 M -5 0 L -1.5 2" stroke="#000" stroke-width="0.5" fill="none"/>
+		<text x="-9" y="1" text-anchor="end" font-size="3">N</text>
 	</g>
 
 	<!-- ==== GEOMETRI: 1 m = 10 mm. Norr = upp. ==== -->
@@ -18,11 +18,12 @@
 		<rect x="72" y="0" width="120" height="90" fill="none" stroke="#000" stroke-width="4"/>
 		<!-- Garagelänga 7,2 × 6,6: x 0..72, y 15..81 -->
 		<rect x="0" y="15" width="72" height="66" fill="none" stroke="#000" stroke-width="4"/>
-		<!-- Uterum 4,8 × 3,6 (glasväggar): x 135..183, y 90..126 -->
-		<rect x="135" y="90" width="48" height="36" fill="none" stroke="#000" stroke-width="0.8"/>
-		<rect x="136.5" y="91.5" width="45" height="33" fill="none" stroke="#000" stroke-width="0.35"/>
-		<text x="159" y="110" font-size="3" text-anchor="middle">UTERUM</text>
-		<text x="159" y="114.5" font-size="2.5" text-anchor="middle" fill="#444">17 m² · balkong ovanpå</text>
+		<!-- Uterum 3,6 × 4,8 på ÖSTRA gaveln: x 192..228, y 25..73 -->
+		<rect x="192" y="25" width="36" height="48" fill="none" stroke="#000" stroke-width="0.8"/>
+		<rect x="193.5" y="26.5" width="33" height="45" fill="none" stroke="#000" stroke-width="0.35"/>
+		<text x="210" y="47" font-size="3" text-anchor="middle">UTERUM</text>
+		<text x="210" y="51.5" font-size="2.5" text-anchor="middle" fill="#444">17 m²</text>
+		<text x="210" y="56" font-size="2.5" text-anchor="middle" fill="#444">balkong ovanpå</text>
 
 		<!-- Innerväggar huvudkropp -->
 		<g stroke="#000" stroke-width="1.2">
@@ -48,15 +49,16 @@
 			<rect x="116" y="88" width="12" height="4" fill="#fff"/>
 			<path d="M 116 90 A 12 12 0 0 1 128 78" fill="none" stroke="#000" stroke-width="0.25"/>
 			<line x1="116" y1="90" x2="116" y2="78" stroke="#000" stroke-width="0.5"/>
-			<!-- dörr vardagsrum → uterum -->
-			<rect x="150" y="88" width="10" height="4" fill="#fff"/>
+			<!-- dörr vardagsrum → uterum (östvägg) -->
+			<rect x="190" y="40" width="4" height="10" fill="#fff"/>
 			<!-- dörr klädvård → garage (västvägg huvudkropp) -->
 			<rect x="70" y="60" width="4" height="9" fill="#fff"/>
-			<!-- garageportar söder (2 st 2,5 m) -->
-			<rect x="8" y="79" width="25" height="4" fill="#fff"/>
-			<rect x="39" y="79" width="25" height="4" fill="#fff"/>
-			<line x1="8" y1="81" x2="33" y2="81" stroke="#000" stroke-width="0.8" stroke-dasharray="3 1.5"/>
-			<line x1="39" y1="81" x2="64" y2="81" stroke="#000" stroke-width="0.8" stroke-dasharray="3 1.5"/>
+			<!-- garageportar NORRA gaveln (byggnadens vänstra kortsida) (2 st 2,5 m) -->
+			<rect x="-2" y="20" width="4" height="25" fill="#fff"/>
+			<rect x="-2" y="51" width="4" height="25" fill="#fff"/>
+			<line x1="0" y1="20" x2="0" y2="45" stroke="#000" stroke-width="0.8" stroke-dasharray="3 1.5"/>
+			<line x1="0" y1="51" x2="0" y2="76" stroke="#000" stroke-width="0.8" stroke-dasharray="3 1.5"/>
+			<text x="-4" y="34" font-size="2.2" text-anchor="end" fill="#444">portar</text>
 		</g>
 
 		<!-- Trappa till lägenheten (i garagets NÖ hörn) -->
@@ -92,13 +94,14 @@
 
 		<!-- Huvudmått (meter, 1 decimal) -->
 		<g font-size="2.8" stroke-width="0.13">
-			<line x1="0" y1="135" x2="192" y2="135" stroke="#000"/>
-			<line x1="0" y1="133" x2="0" y2="137" stroke="#000"/><line x1="72" y1="133" x2="72" y2="137" stroke="#000"/><line x1="192" y1="133" x2="192" y2="137" stroke="#000"/>
+			<line x1="0" y1="135" x2="228" y2="135" stroke="#000"/>
+			<line x1="0" y1="133" x2="0" y2="137" stroke="#000"/><line x1="72" y1="133" x2="72" y2="137" stroke="#000"/><line x1="192" y1="133" x2="192" y2="137" stroke="#000"/><line x1="228" y1="133" x2="228" y2="137" stroke="#000"/>
 			<text x="36" y="133.8" text-anchor="middle">7,2</text>
 			<text x="132" y="133.8" text-anchor="middle">12,0</text>
-			<line x1="200" y1="0" x2="200" y2="90" stroke="#000"/>
-			<line x1="198" y1="0" x2="202" y2="0" stroke="#000"/><line x1="198" y1="90" x2="202" y2="90" stroke="#000"/>
-			<text x="203" y="46" font-size="2.8">9,0</text>
+			<text x="210" y="133.8" text-anchor="middle">3,6</text>
+			<line x1="236" y1="0" x2="236" y2="90" stroke="#000"/>
+			<line x1="234" y1="0" x2="238" y2="0" stroke="#000"/><line x1="234" y1="90" x2="238" y2="90" stroke="#000"/>
+			<text x="239" y="46" font-size="2.8">9,0</text>
 		</g>
 	</g>
 

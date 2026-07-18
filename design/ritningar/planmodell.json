@@ -1,5 +1,13 @@
 {
-	"version": "v0-skiss",
+	"version": "v1-skiss",
+	"andringar_v1": [
+		"ORIENTERING RÄTTAD: norr är åt husets vänstra kortsida → långaxeln går nord-syd, ENTRÉN MOT ÖSTER, nock i nord-sydlig riktning",
+		"Garaget i NORRA änden, portarna i norra gaveln (infart norrifrån)",
+		"Uterum + balkong på SÖDRA gaveln (motsatt garaget) — bästa solläget",
+		"Master bedroom mot söder med skjutparti i södra gavelväggen",
+		"Lägenheten: öppen studio (sovrum/allrum/pentry i ett) + separat bad/wc"
+	],
+	"orientering": { "entrefasad": "öster", "garage": "norr", "uterum_balkong": "söder" },
 	"datum": "2026-07-18",
 	"inspiration": "A-hus Villa Skanör (2-plan, 203 kvm) — anpassad",
 	"antaganden": [
