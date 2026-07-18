@@ -41,6 +41,16 @@ knows where the project stands:
   entry «Kunskapsbank — index»): bygglov-checkplan (FAS 0–6, revised for förhandsbesked),
   entreprenadformer (forms + bygglov impact), företagskandidater (per-category contractor
   shortlists incl. GE tender list). Authored per `design/DOKUMENT.md`.
+- **Husritningar (skisser):** iterated via the repo skill `.claude/skills/bygglovsritningar/`
+  (sketch→schematic workflow, Trelleborg requirements). Current state = **skiss v2** in
+  `design/ritningar/` (skiss-v2-*.svg + `planmodell.json` = the single source of truth for
+  geometry/decisions): based on the REAL Fiskarhedenvillan Skanör (13,2 × 7,2 m inv,
+  1,5-plan, ~38°), garage as a 5,0 m extension of the main body (north end, portar in the
+  gable, tvätt door = connection), övervåning mirrored (master+dress+bad south, skjutparti
+  → balkong over uterum on south gable), small bedrooms merged with their klk, PASSAGE
+  between them → apartment over the garage (open studio + bad/wc). Entré faces EAST,
+  north is at the house's left gable. OBS: apartment = second bostadsenhet (extra VA
+  bostadsenhetsavgift, must be declared in bygglov, check förhandsbesked villkor).
 - **Seeded plan facts** (prod D1): El 53 700 kr (Trelleborgs Energi 2026 exact), VA
   196 290 kr (national average — Trelleborg's prisbilaga not public, VERIFY with
   kommunen 0410-73 30 00), LTA-pump 50 000 kr (ask if huvudmannen provides it),
