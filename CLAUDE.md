@@ -51,6 +51,11 @@ knows where the project stands:
   between them → apartment over the garage (open studio + bad/wc). Entré faces EAST,
   north is at the house's left gable. OBS: apartment = second bostadsenhet (extra VA
   bostadsenhetsavgift, must be declared in bygglov, check förhandsbesked villkor).
+  **Published in the app under the Ritningar tab as version 0.1**
+  (`static/ritningar/v0.1/` + manifest `src/lib/ritningar.ts`). Publish workflow for a new
+  version: copy the four SVGs to `static/ritningar/vX.Y/` reusing the stable filenames
+  (`plan-bv.svg`, `plan-ov.svg`, `fasad-oster.svg`, `fasad-norr.svg`) and **PREPEND** a new
+  entry to `ritningsversioner` in `src/lib/ritningar.ts` (newest first — index 0 is latest).
 - **Seeded plan facts** (prod D1): El 53 700 kr (Trelleborgs Energi 2026 exact), VA
   196 290 kr (national average — Trelleborg's prisbilaga not public, VERIFY with
   kommunen 0410-73 30 00), LTA-pump 50 000 kr (ask if huvudmannen provides it),

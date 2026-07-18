@@ -9,6 +9,7 @@
 	const nav = [
 		{ href: '/', label: 'Översikt' },
 		{ href: '/anteckningar', label: 'Anteckningar' },
+		{ href: '/ritningar', label: 'Ritningar' },
 		{ href: '/installningar', label: 'Inställningar' }
 	];
 

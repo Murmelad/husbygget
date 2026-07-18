@@ -54,7 +54,7 @@ numbers or the kunskapsbank without flags.
 - **Publish flow** (prod, via wrangler): insert `journal_entries` (section-linked;
   Bygglov = projektering topics, Entreprenadform = contractor topics, NULL = index),
   `wrangler r2 object put husbygget-files/entry/<id>/<uuid>/<name>.html --content-type
-  "text/html; charset=utf-8" --remote`, insert `journal_files` row (name, size!).
+"text/html; charset=utf-8" --remote`, insert `journal_files` row (name, size!).
   Update the index doc (`Kunskapsbank — index`, entry without section) with a new
   `.doc` row. Write SQL to a scratchpad FILE and run with `--file` (åäö-safe); get ids
   with a separate `SELECT max(id)` + the `$r.Substring($r.IndexOf('['))` JSON parse.

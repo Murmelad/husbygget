@@ -19,20 +19,43 @@ changes a wall on the plan, regenerate fasader/sektion — never hand-tweak one 
 {
 	"fastighet": { "beteckning": "<FASTIGHETSBETECKNING>", "tomtM2": 3000 },
 	"byggnad": {
-		"yttermatt": { "b": 15600, "d": 9000 },          // mm
-		"vagg": { "ytter": 400, "inner": 120 },          // nominell tjocklek
-		"fg": 12.35,                                      // FG+ (möh, från nybyggnadskartan)
-		"rumshojd": 2500, "taklutning": 27, "takform": "sadeltak",
-		"nockhojd": 6200, "byggnadshojd": 3900,           // från mark medel
+		"yttermatt": { "b": 15600, "d": 9000 }, // mm
+		"vagg": { "ytter": 400, "inner": 120 }, // nominell tjocklek
+		"fg": 12.35, // FG+ (möh, från nybyggnadskartan)
+		"rumshojd": 2500,
+		"taklutning": 27,
+		"takform": "sadeltak",
+		"nockhojd": 6200,
+		"byggnadshojd": 3900, // från mark medel
 		"fasad": { "material": "stående träpanel", "kulor": "NCS S 4550-Y90R (faluröd)" },
 		"tak": { "material": "betongpannor", "kulor": "grafitgrå" }
 	},
-	"rum": [ { "namn": "Kök", "m2": 18.4, "polygon": [[0,0],[4200,0],[4200,4400],[0,4400]] } ],
+	"rum": [
+		{
+			"namn": "Kök",
+			"m2": 18.4,
+			"polygon": [
+				[0, 0],
+				[4200, 0],
+				[4200, 4400],
+				[0, 4400]
+			]
+		}
+	],
 	"oppningar": [
 		{ "typ": "dorr", "vagg": "syd", "pos": 7200, "bredd": 1000, "slagning": "in-höger" },
 		{ "typ": "fonster", "vagg": "vast", "pos": 2000, "bredd": 1500, "brostning": 900, "hojd": 1300 }
 	],
-	"tomt": { "grans": [[0,0],[55000,0],[55000,55000],[0,55000]], "byggnadPlacering": { "x": 18000, "y": 22000, "rotation": 0 }, "gransAvstand": { "min": 4500 } }
+	"tomt": {
+		"grans": [
+			[0, 0],
+			[55000, 0],
+			[55000, 55000],
+			[0, 55000]
+		],
+		"byggnadPlacering": { "x": 18000, "y": 22000, "rotation": 0 },
+		"gransAvstand": { "min": 4500 }
+	}
 }
 ```
 
@@ -59,13 +82,13 @@ polishing. Never silently invent a measurement — assumptions get listed and co
 `MALL-A3.svg` in this skill folder as the sheet (A3 liggande, 420×297, ram,
 ritningshuvud, skalstock, norrpil):
 
-| Ritning | Skala | Måste visa (Trelleborgs krav) |
-|---|---|---|
-| Situationsplan | 1:400 (på nybyggnadskarta) | byggnadens placering MÅTTSATT till närmaste fastighetsgränser (≥2 mått), FG+, in-/utfart, parkering, norrpil |
-| Markplaneringsritning | 1:400 | nya + befintliga marklinjer, sockelhöjd/FG+, infart, parkering, ev. dagvatten |
-| Planritning | 1:100 | rumsindelning m. användning + m², yttermått, dörrbredder, kök/badrum-inredning, trappa/nivåskillnader, snittmarkering (A–A), väderstreck |
-| Fasadritningar (alla 4) | 1:100 | material + kulör (NCS), byggnadshöjd, taklutning, NYA och BEFINTLIGA marklinjer (befintlig streckad), väderstreck per fasad |
-| Sektionsritning A–A | 1:100 | rumshöjd, byggnadshöjd/nockhöjd, FG+, taklutning, marklinjer, snittbeteckning |
+| Ritning                 | Skala                      | Måste visa (Trelleborgs krav)                                                                                                            |
+| ----------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Situationsplan          | 1:400 (på nybyggnadskarta) | byggnadens placering MÅTTSATT till närmaste fastighetsgränser (≥2 mått), FG+, in-/utfart, parkering, norrpil                             |
+| Markplaneringsritning   | 1:400                      | nya + befintliga marklinjer, sockelhöjd/FG+, infart, parkering, ev. dagvatten                                                            |
+| Planritning             | 1:100                      | rumsindelning m. användning + m², yttermått, dörrbredder, kök/badrum-inredning, trappa/nivåskillnader, snittmarkering (A–A), väderstreck |
+| Fasadritningar (alla 4) | 1:100                      | material + kulör (NCS), byggnadshöjd, taklutning, NYA och BEFINTLIGA marklinjer (befintlig streckad), väderstreck per fasad              |
+| Sektionsritning A–A     | 1:100                      | rumshöjd, byggnadshöjd/nockhöjd, FG+, taklutning, marklinjer, snittbeteckning                                                            |
 
 **Fas 4 — Granska & leverera.** Render each SVG → PNG (`npx --yes sharp-cli --input x.svg
 --output x.png resize 1754 1240` ≈ A3 150dpi) and LOOK at it (Read the PNG) before
@@ -111,3 +134,12 @@ measurement with a ruler on a test print.
   uppfyllda i ritningarna.
 - Vid tveksamhet om ett kommunkrav: kolla trelleborg.se «Vilka handlingar behövs?» —
   kraven i tabellen ovan hämtades därifrån 2026-07-18.
+
+## Publicering i appen
+
+Skisserna publiceras i appen under fliken **Ritningar**, versionerade. En ny version:
+kopiera de fyra SVG:erna till `static/ritningar/vX.Y/` med de STABILA filnamnen
+(`plan-bv.svg`, `plan-ov.svg`, `fasad-oster.svg`, `fasad-norr.svg` — varje version
+återanvänder samma namn i sin egen mapp) och **PREPEND:a** en ny post i
+`ritningsversioner` i `src/lib/ritningar.ts` (nyaste först — index 0 = senaste, som
+`/ritningar` redirectar till). Ingen databas: manifestet är den enda källan.
