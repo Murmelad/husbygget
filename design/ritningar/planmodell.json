@@ -1,5 +1,14 @@
 {
-	"version": "v1-skiss",
+	"version": "v2-skiss",
+	"andringar_v2": [
+		"Basen är nu RIKTIGA Skanör (Fiskarhedenvillan, 13,2 × 7,2 m inv, 1,5-plan, taklutning ~38°, takfönster)",
+		"Garaget = FÖRLÄNGNING av huvudkroppen med 5,0 m åt norr (samma bredd, takfot och nock) — totalt 19,0 m",
+		"Tvättens dörr i norra väggen = förbindelsen hus ↔ garage (Skanörs befintliga dörr)",
+		"Övervåningen SPEGLAD: master 14,4 + dress 4,4 + bad 6,6 åt SÖDER, skjutparti mot balkongen",
+		"Små sovrummen SAMMANSLAGNA med sina klk (~12-13 m² styck)",
+		"PASSAGE mellan sovrummen: allrum → lägenhetens dörr i norra väggen (garaget hålls fritt för bilar)",
+		"Lägenheten över garaget: öppen studio + separat bad/wc, under samma 1,5-planstak"
+	],
 	"andringar_v1": [
 		"ORIENTERING RÄTTAD: norr är åt husets vänstra kortsida → långaxeln går nord-syd, ENTRÉN MOT ÖSTER, nock i nord-sydlig riktning",
 		"Garaget i NORRA änden, portarna i norra gaveln (infart norrifrån)",
