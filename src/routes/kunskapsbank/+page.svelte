@@ -57,7 +57,7 @@
 		autocomplete="off"
 		placeholder="Sök i dokumenten…"
 		aria-label="Sök i dokumenten"
-		class="w-full rounded-ctl border border-line bg-panel px-4 py-2.5 text-sm text-ink shadow-card placeholder:text-dim focus:border-accent focus:outline-none focus-visible:outline-none"
+		class="w-full rounded-ctl border border-line bg-panel px-4 py-2.5 text-sm text-ink shadow-card placeholder:text-dim focus:border-accent"
 	/>
 </form>
 
