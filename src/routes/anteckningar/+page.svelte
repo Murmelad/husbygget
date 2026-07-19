@@ -10,6 +10,7 @@
 	let confirming = $state<number | null>(null);
 
 	const sectionName = $derived(new Map(data.sections.map((s) => [s.id, s.name])));
+	const kbEntries = $derived(new Set(data.kbEntryIds));
 
 	const dtf = new Intl.DateTimeFormat('sv-SE', {
 		year: 'numeric',
@@ -137,6 +138,14 @@
 							class="inline-flex items-center rounded-full border border-line-strong px-2.5 py-0.5 text-xs whitespace-nowrap text-accent-ink no-underline"
 						>
 							{sectionName.get(entry.sectionId) ?? `Avsnitt #${entry.sectionId}`}
+						</a>
+					{/if}
+					{#if kbEntries.has(entry.id)}
+						<a
+							href="/kunskapsbank"
+							class="inline-flex items-center rounded-full border border-accent bg-accent-tint px-2.5 py-0.5 text-xs whitespace-nowrap text-accent-ink no-underline"
+						>
+							Kunskapsbank
 						</a>
 					{/if}
 

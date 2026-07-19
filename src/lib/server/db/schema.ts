@@ -191,6 +191,29 @@ export const journalFiles = sqliteTable(
 );
 
 // ---------------------------------------------------------------------------
+// Kunskapsbank (knowledge base) — structured metadata for the published research
+// documents (a subset of journal_entries whose attachment is an HTML doc). One row
+// per document keyed by its entry id; the /kunskapsbank page lists + full-text searches
+// these. `searchText` holds the doc's HTML stripped to plain text (built by the reindex
+// action), so search never has to touch R2 at request time.
+// ---------------------------------------------------------------------------
+
+export const kbDocs = sqliteTable('kb_docs', {
+	entryId: integer('entry_id')
+		.primaryKey()
+		.references(() => journalEntries.id),
+	title: text('title').notNull(),
+	category: text('category').notNull(),
+	version: text('version'),
+	updatedAt: integer('updated_at', { mode: 'timestamp_ms' }),
+	summary: text('summary'),
+	/** Comma-separated tags. */
+	tags: text('tags'),
+	/** Plain-text extraction of the doc's HTML, used for full-text search. */
+	searchText: text('search_text')
+});
+
+// ---------------------------------------------------------------------------
 // Inferred row types
 // ---------------------------------------------------------------------------
 
@@ -209,3 +232,5 @@ export type JournalEntry = typeof journalEntries.$inferSelect;
 export type NewJournalEntry = typeof journalEntries.$inferInsert;
 export type JournalFile = typeof journalFiles.$inferSelect;
 export type NewJournalFile = typeof journalFiles.$inferInsert;
+export type KbDoc = typeof kbDocs.$inferSelect;
+export type NewKbDoc = typeof kbDocs.$inferInsert;

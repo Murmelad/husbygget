@@ -37,8 +37,9 @@ knows where the project stands:
   (outside verksamhetsområdet) follows taxa/riktlinjer.
 - **Leaning generalentreprenad** (own architect + one GE) — decision not yet ticked in
   the app (Entreprenadform section, 3 zero-cost options).
-- **Kunskapsbank** (research docs, attached in Anteckningar; index = the section-less
-  entry «Kunskapsbank — index»): bygglov-checkplan (FAS 0–6, revised for förhandsbesked),
+- **Kunskapsbank** (research docs, attached in Anteckningar; browse + full-text search on
+  the **/kunskapsbank** page — the old section-less index entry «Kunskapsbank — index» is
+  retired): bygglov-checkplan (FAS 0–6, revised for förhandsbesked),
   entreprenadformer (forms + bygglov impact), företagskandidater (per-category contractor
   shortlists incl. GE tender list). Authored per `design/DOKUMENT.md`.
 - **Husritningar (skisser):** iterated via the repo skill `.claude/skills/bygglovsritningar/`
@@ -125,6 +126,15 @@ npm run db:migrate:local   # / :remote
   `journal_entries`/`journal_files` (`src/lib/server/journal.ts`). Deleting an entry
   deletes its R2 objects. Files stream via `/anteckningar/fil/[id]` with
   `X-Content-Type-Options: nosniff`. Timeline cards show "Anteckningar (N)" chips.
+- **Kunskapsbank**: published research docs (the subset of `journal_entries` whose
+  attachment is an HTML doc) each get a `kb_docs` row (PK = `entry_id`; title, category,
+  version, updated_at, summary, tags, search_text). The `/kunskapsbank` page lists them
+  grouped by a fixed category order and full-text searches title+summary+tags+search_text
+  in JS (`src/lib/server/kb.ts`; client-safe types/helpers in `$lib/kb.ts`). `search_text`
+  is derived from the doc HTML by the reindex action ("Uppdatera sökindex" → `reindexKbDocs`),
+  never at request time — rerun it after any upload/revision. Deleting an entry also drops
+  its `kb_docs` row. The old index document (entry 4) is RETIRED — do not revise it. Publish
+  workflow: `design/DOKUMENT.md`.
 - **All SEK inputs use `<MoneyInput>`** ($lib/components) — live sv-SE thousand grouping;
   the server `intOf()` strips whitespace before parsing. Never a raw `type="number"`
   for money.

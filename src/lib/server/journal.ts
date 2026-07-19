@@ -1,6 +1,12 @@
 import { asc, count, desc, eq, inArray, isNotNull } from 'drizzle-orm';
 import type { getDb } from './db';
-import { journalEntries, journalFiles, type JournalEntry, type JournalFile } from './db/schema';
+import {
+	journalEntries,
+	journalFiles,
+	kbDocs,
+	type JournalEntry,
+	type JournalFile
+} from './db/schema';
 
 type Db = ReturnType<typeof getDb>;
 
@@ -84,6 +90,8 @@ export async function getFile(db: Db, id: number): Promise<JournalFile | undefin
  */
 export async function deleteEntry(db: Db, id: number): Promise<JournalFile[]> {
 	const files = await db.select().from(journalFiles).where(eq(journalFiles.entryId, id));
+	// Drop the kunskapsbank row first (its PK references this entry).
+	await db.delete(kbDocs).where(eq(kbDocs.entryId, id));
 	await db.delete(journalFiles).where(eq(journalFiles.entryId, id));
 	await db.delete(journalEntries).where(eq(journalEntries.id, id));
 	return files;

@@ -30,9 +30,18 @@ mörkt/ljust läge som appen, och navigerbara utan scroll-jakt.
 - **Revidering = skriv över SAMMA R2-nyckel** (länken består) + uppdatera `size` i
   `journal_files` + bumpa versionsraden i dokumentets titelblock + lägg gärna en rad
   sist i anteckningens body om vad som ändrats.
-- **Indexet** (`Kunskapsbank — index`, egen anteckning utan avsnittskoppling) ska få en
-  ny `.doc`-rad för varje nytt dokument: titel, tvårading, `vN · datum · avsnitt`.
-  Dokumentlänkarna i indexet är relativa: `/anteckningar/fil/<journal_files.id>`.
+- **Registrera dokumentet i kunskapsbanken** (`kb_docs`, en rad per dokument, PK =
+  `entry_id`) — detta ERSÄTTER det gamla indexdokumentet:
+  - Nytt dokument → `INSERT INTO kb_docs (entry_id, title, category, version, updated_at,
+    summary, tags) VALUES (…)`. Kategori = en av «Bygglov & process», «Entreprenad &
+    inköp», «Utformning & teknik», «Mark & tomt», «Ekonomi». `updated_at` = timestamp_ms.
+  - Revidering → `UPDATE kb_docs SET version = …, updated_at = …, summary = … WHERE
+    entry_id = …` (samma bump som titelblocket).
+- **Uppdatera sökindexet efter varje upp-/omladdning**: klicka «Uppdatera sökindex» på
+  `/kunskapsbank` (eller kör motsvarande `UPDATE kb_docs SET search_text = …`). Annars
+  hittar fritextsökningen inte den nya/ändrade texten.
+- **Det gamla indexdokumentet** (`Kunskapsbank — index`, entry 4) är PENSIONERAT och ersätts
+  av sidan `/kunskapsbank`. Revidera det inte längre — men radera det inte heller (historik).
 
 ## Skrivregler (för läsbarhetens skull)
 

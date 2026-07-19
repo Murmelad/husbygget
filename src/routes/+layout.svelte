@@ -10,6 +10,7 @@
 		{ href: '/', label: 'Översikt' },
 		{ href: '/anteckningar', label: 'Anteckningar' },
 		{ href: '/ritningar', label: 'Ritningar' },
+		{ href: '/kunskapsbank', label: 'Kunskapsbank' },
 		{ href: '/installningar', label: 'Inställningar' }
 	];
 

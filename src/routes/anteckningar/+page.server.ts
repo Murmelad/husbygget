@@ -2,6 +2,7 @@ import { fail } from '@sveltejs/kit';
 import { bucketFromPlatform, dbFromPlatform } from '$lib/server/platform';
 import { listActive } from '$lib/server/sections';
 import { addFile, createEntry, deleteEntry, listEntries } from '$lib/server/journal';
+import { listKbEntryIds } from '$lib/server/kb';
 import type { Actions, PageServerLoad } from './$types';
 
 /** 15 MB per uploaded file. */
@@ -33,11 +34,12 @@ export const load: PageServerLoad = async ({ platform, url }) => {
 	const db = dbFromPlatform(platform);
 	const avsnitt = intOf(url.searchParams.get('avsnitt'));
 	const sectionId = avsnitt != null && avsnitt > 0 ? avsnitt : null;
-	const [entries, sections] = await Promise.all([
+	const [entries, sections, kbEntryIds] = await Promise.all([
 		listEntries(db, sectionId != null ? { sectionId } : {}),
-		listActive(db)
+		listActive(db),
+		listKbEntryIds(db)
 	]);
-	return { entries, sections, activeSectionId: sectionId };
+	return { entries, sections, activeSectionId: sectionId, kbEntryIds };
 };
 
 export const actions: Actions = {
