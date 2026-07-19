@@ -10,12 +10,15 @@ export const load: PageServerLoad = async ({ platform, url }) => {
 	const docs = await listKbDocs(db);
 	const indexedCount = docs.filter((d) => d.searchText != null && d.searchText !== '').length;
 	const total = docs.length;
-	const q = (url.searchParams.get('q') ?? '').trim();
+	// `query` is echoed straight back into the input (so typing isn't clobbered on a sub-min
+	// query navigating to the browse view); `q` (trimmed) drives the search + count line.
+	const query = url.searchParams.get('q') ?? '';
+	const q = query.trim();
 
 	if (q.length >= MIN_QUERY) {
-		return { mode: 'search' as const, q, hits: searchKbDocs(docs, q), total, indexedCount };
+		return { mode: 'search' as const, query, q, hits: searchKbDocs(docs, q), total, indexedCount };
 	}
-	return { mode: 'browse' as const, q: '', groups: groupKbByCategory(docs), total, indexedCount };
+	return { mode: 'browse' as const, query, groups: groupKbByCategory(docs), total, indexedCount };
 };
 
 export const actions: Actions = {

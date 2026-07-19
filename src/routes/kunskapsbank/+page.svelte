@@ -52,7 +52,7 @@
 	<input
 		type="search"
 		name="q"
-		value={data.q}
+		value={data.query}
 		oninput={onInput}
 		autocomplete="off"
 		placeholder="Sök i dokumenten…"
