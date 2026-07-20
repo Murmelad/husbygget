@@ -29,7 +29,7 @@
 
 <svelte:window onkeydown={(e) => e.key === 'Escape' && (menuOpen = false)} />
 
-<div class="mx-auto max-w-3xl px-5">
+<div class="mx-auto max-w-5xl px-5">
 	<header class="flex items-center gap-4 border-b-2 border-ink pt-[22px] pb-3.5">
 		<a
 			href="/"
@@ -146,6 +146,6 @@
 	</div>
 </aside>
 
-<main class="mx-auto max-w-3xl px-5 pb-16">
+<main class="mx-auto max-w-5xl px-5 pb-16">
 	{@render children()}
 </main>
